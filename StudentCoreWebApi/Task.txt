@@ -1,0 +1,32 @@
+Create a new ASP.NET Core Web API project
+Install required NuGet packages (EntityFrameworkCore, SQL Server, Design)
+Create the Student model (Models/Student.cs)
+Create the ApplicationDbContext class (Data/ApplicationDbContext.cs)
+Configure database connection in appsettings.json
+Register DbContext in Program.cs
+Create database migrations (dotnet ef migrations add InitialCreate)
+Apply migrations to update the database (dotnet ef database update)
+Create the StudentController for CRUD operations
+Test API endpoints using Swagger or Postman
+Implement exception handling & validation in API
+Add logging for API requests
+Implement pagination for student list API
+Use Repository Pattern
+SofT Delete for STudent table
+Make common API response for all methods.
+Use Mapper for mappings.
+
+Enable CORS for frontend integration
+
+
+Day: Wednesday
+Date: 19-03-2025
+
+Worked on the assigned task and resolved errors.
+
+
+
+
+
+Command to revert the migration: 
+Update-Database -Migration: InitialCreate

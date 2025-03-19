@@ -1,0 +1,180 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\dtos\\upsertdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\dtos\\upsertdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\dtos\\adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\dtos\\adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\dtos\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\dtos\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|c:\\users\\91948\\source\\repos\\studentcorewebapi\\studentcorewebapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFFB6435-AB9D-412C-9B95-5AF30D2D16B2}|StudentCoreWebApi\\StudentCoreWebApi.csproj|solutionrelative:studentcorewebapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Program.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Program.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\Program.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAYwIkAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T08:51:04.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Mapper\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\Mapper\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Mapper\\MappingProfile.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\Mapper\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T05:24:38.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UpsertDto.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\DTOs\\UpsertDto.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\DTOs\\UpsertDto.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\DTOs\\UpsertDto.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\DTOs\\UpsertDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T05:12:06.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Controllers\\UserController.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\Controllers\\UserController.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAwwD0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T09:55:34.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\Repository\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\Repository\\UserRepository.cs",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAswAMBAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T09:42:45.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\DTOs\\UserResponseDto.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\DTOs\\UserResponseDto.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\DTOs\\UserResponseDto.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\DTOs\\UserResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T06:15:29.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Interface\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\Interface\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Interface\\IUserRepository.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\Interface\\IUserRepository.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAIwBIAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T07:15:49.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddUser.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\DTOs\\AddUser.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\DTOs\\AddUser.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\DTOs\\AddUser.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\DTOs\\AddUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T11:21:05.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "StudentCoreWebApi\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\91948\\source\\repos\\StudentCoreWebApi\\StudentCoreWebApi\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "StudentCoreWebApi\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T05:24:37.885Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
