@@ -22,11 +22,79 @@ namespace StudentCoreWebApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("StudentCoreWebApi.Model.Menu", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("ParentMenuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentMenuId");
+
+                    b.ToTable("Menus");
+                });
+
+            modelBuilder.Entity("StudentCoreWebApi.Model.MenuPermission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MenuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PermissionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.HasIndex("PermissionId");
+
+                    b.ToTable("MenuPermissions");
+                });
+
+            modelBuilder.Entity("StudentCoreWebApi.Model.Permission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissions");
+                });
+
             modelBuilder.Entity("StudentCoreWebApi.Model.Role", b =>
                 {
                     b.Property<Guid>("role_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("role_name")
                         .IsRequired()
@@ -35,6 +103,23 @@ namespace StudentCoreWebApi.Migrations
                     b.HasKey("role_Id");
 
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("StudentCoreWebApi.Model.RolePermission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PermissionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RolePermissions");
                 });
 
             modelBuilder.Entity("StudentCoreWebApi.Model.User", b =>
@@ -85,6 +170,41 @@ namespace StudentCoreWebApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UsersRoles");
+                });
+
+            modelBuilder.Entity("StudentCoreWebApi.Model.Menu", b =>
+                {
+                    b.HasOne("StudentCoreWebApi.Model.Menu", "ParentMenu")
+                        .WithMany("SubMenus")
+                        .HasForeignKey("ParentMenuId");
+
+                    b.Navigation("ParentMenu");
+                });
+
+            modelBuilder.Entity("StudentCoreWebApi.Model.MenuPermission", b =>
+                {
+                    b.HasOne("StudentCoreWebApi.Model.Menu", "Menu")
+                        .WithMany("MenuPermissions")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StudentCoreWebApi.Model.Permission", "Permission")
+                        .WithMany()
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
+
+                    b.Navigation("Permission");
+                });
+
+            modelBuilder.Entity("StudentCoreWebApi.Model.Menu", b =>
+                {
+                    b.Navigation("MenuPermissions");
+
+                    b.Navigation("SubMenus");
                 });
 #pragma warning restore 612, 618
         }

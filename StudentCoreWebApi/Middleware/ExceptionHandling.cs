@@ -1,7 +1,8 @@
-﻿using System.Net;
-using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Serilog;
 
 namespace StudentCoreWebApi.Middleware
@@ -10,12 +11,12 @@ namespace StudentCoreWebApi.Middleware
     {
         private readonly RequestDelegate _next;
 
-        public ExceptionHandling (RequestDelegate next)
+        public ExceptionHandling(RequestDelegate next)
         {
             _next = next;
         }
 
-        public  async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
             try
             {
@@ -23,12 +24,12 @@ namespace StudentCoreWebApi.Middleware
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "An Unknown Error ocurred");
+                Log.Error(ex, "An error occurred: {Message}", ex.Message);
                 await HandleExceptionAsync(context, ex);
             }
-    }
+        }
 
-        public static Task HandleExceptionAsync(HttpContext context, Exception ex)
+        private static Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             var response = context.Response;
             response.ContentType = "application/json";
@@ -45,8 +46,10 @@ namespace StudentCoreWebApi.Middleware
             var errorResponse = new
             {
                 Message = ex.Message,
-                statusCode = statusCode,
+                StatusCode = (int)statusCode,
+                ErrorType = ex.GetType().Name
             };
+
             return response.WriteAsync(JsonSerializer.Serialize(errorResponse));
         }
     }

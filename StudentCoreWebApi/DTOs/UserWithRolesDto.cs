@@ -15,5 +15,4 @@
         public long? Phone { get; set; }
         public List<UserRoleDto> Roles { get; set; }
     }
-
 }

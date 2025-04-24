@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "nfDR9ELZ6Dcsb4lwoNz1JpL3KCpG8iPN7Ui3bPqpEK0=",
+  "Source": "StudentCoreWebApi",
+  "BasePath": "_content/StudentCoreWebApi",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

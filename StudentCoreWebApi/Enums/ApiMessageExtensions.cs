@@ -10,7 +10,7 @@
         public const string UserAddedSuccessfully = "User Added Successfully";
         public const string UserUpdatedSuccessfully = "User Updated Successfully";
         public const string UserRetriveSuccessfully = "User Retrieve Successfully";
-        public const string UserDeleteSuccessfully = "User Delete Successfully";
+        public const string UserDeletedSuccessfully = "User Delete Successfully";
         public const string UserRegisterSuccessfully = "User registered successfully with default role 'Manager'.";
         public const string UserLoginSuccessfully = "User Login Successfully";
         public const string InvalidCredentials = "Invalid Crendentials";

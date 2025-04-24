@@ -7,5 +7,3 @@
         public Guid Role_Id { get; set; }
     }
 }
-
-//Default Access = "Manager"

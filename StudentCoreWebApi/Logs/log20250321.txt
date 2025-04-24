@@ -1,0 +1,726 @@
+2025-03-21 16:50:06.963 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-21 16:50:07.738 +05:30 [INF] Now listening on: https://localhost:7211
+2025-03-21 16:50:07.740 +05:30 [INF] Now listening on: http://localhost:5181
+2025-03-21 16:50:08.024 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-21 16:50:08.027 +05:30 [INF] Hosting environment: Development
+2025-03-21 16:50:08.028 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-03-21 16:50:10.367 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-03-21 16:50:11.059 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 708.7763ms
+2025-03-21 16:50:11.117 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-21 16:50:11.117 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-03-21 16:50:11.146 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 28.6096ms
+2025-03-21 16:50:11.271 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 153.7953ms
+2025-03-21 16:50:11.473 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-03-21 16:50:11.505 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.8092ms
+2025-03-21 16:52:01.919 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 56
+2025-03-21 16:52:01.943 +05:30 [INF] CORS policy execution successful.
+2025-03-21 16:52:02.177 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 16:52:02.259 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 16:52:03.185 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 16:52:05.747 +05:30 [INF] Executed DbCommand (113ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__email_0
+2025-03-21 16:52:26.277 +05:30 [INF] Executed DbCommand (20,462ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2025-03-21 16:52:30.588 +05:30 [INF] Executed DbCommand (3,176ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Email], [FirstName], [IsDeleted], [LastName], [PasswordHash], [PasswordSalt], [Phone])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-03-21 16:53:05.763 +05:30 [ERR] Failed executing DbCommand (35,106ms) [Parameters=[@__roleName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE LOWER([r].[role_name]) = @__roleName_0
+2025-03-21 16:53:05.845 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'StudentCoreWebApi.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:b3147e47-f74a-411c-99ae-462f5d3c63a4
+Error Number:-2,State:0,Class:11
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:b3147e47-f74a-411c-99ae-462f5d3c63a4
+Error Number:-2,State:0,Class:11
+2025-03-21 16:53:06.191 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 63924.3368ms
+2025-03-21 16:53:06.199 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 16:53:06.327 +05:30 [ERR] An Unknown Error ocurred
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at UserRepository.RegisterUserAsync(RegisterRequest request) in C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi\Repository\UserRepository.cs:line 206
+   at StudentCoreWebApi.Controllers.AuthController.Register(RegisterRequest request) in C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi\Controllers\AuthController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StudentCoreWebApi.Middleware.ExceptionHandling.InvokeAsync(HttpContext context) in C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi\Middleware\ExceptionHandling.cs:line 22
+ClientConnectionId:b3147e47-f74a-411c-99ae-462f5d3c63a4
+Error Number:-2,State:0,Class:11
+2025-03-21 16:53:06.446 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 500 null application/json 64527.1584ms
+2025-03-21 16:53:10.588 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 56
+2025-03-21 16:53:10.602 +05:30 [INF] CORS policy execution successful.
+2025-03-21 16:53:10.607 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 16:53:10.609 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 16:53:10.642 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 16:53:11.414 +05:30 [INF] Executed DbCommand (707ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__email_0
+2025-03-21 16:53:11.445 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 796.429ms.
+2025-03-21 16:53:11.460 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-21 16:53:11.486 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 873.185ms
+2025-03-21 16:53:11.496 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 16:53:11.499 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 400 null application/json; charset=utf-8 910.8789ms
+2025-03-21 16:53:58.981 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 58
+2025-03-21 16:53:58.999 +05:30 [INF] CORS policy execution successful.
+2025-03-21 16:53:59.003 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 16:53:59.005 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 16:53:59.039 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 16:54:02.128 +05:30 [INF] Executed DbCommand (2,996ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__email_0
+2025-03-21 16:54:02.144 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2025-03-21 16:54:02.376 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Email], [FirstName], [IsDeleted], [LastName], [PasswordHash], [PasswordSalt], [Phone])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-03-21 16:54:02.388 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__roleName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE LOWER([r].[role_name]) = @__roleName_0
+2025-03-21 16:54:02.427 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UsersRoles] ([Id], [Role_Id], [User_Id])
+VALUES (@p0, @p1, @p2);
+2025-03-21 16:54:02.432 +05:30 [INF] User registered successfully with Email: vansh@gmail.com
+2025-03-21 16:54:02.435 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3393.1202ms.
+2025-03-21 16:54:02.439 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.User, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 16:54:02.465 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 3457.4029ms
+2025-03-21 16:54:02.468 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 16:54:02.470 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 200 null application/json; charset=utf-8 3488.667ms
+2025-03-21 16:56:52.110 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/register - null null
+2025-03-21 16:56:52.146 +05:30 [INF] CORS policy execution successful.
+2025-03-21 16:56:52.199 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/register - 204 null null 98.4848ms
+2025-03-21 16:56:52.206 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 60
+2025-03-21 16:56:52.220 +05:30 [INF] CORS policy execution successful.
+2025-03-21 16:56:52.235 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 16:56:52.252 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 16:56:52.485 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-03-21 16:56:52.596 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 341.1884ms
+2025-03-21 16:56:52.599 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 16:56:52.602 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 400 null application/problem+json; charset=utf-8 395.9398ms
+2025-03-21 17:09:20.558 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/register - null null
+2025-03-21 17:09:20.578 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:09:20.588 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 55
+2025-03-21 17:09:20.590 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/register - 204 null null 33.0413ms
+2025-03-21 17:09:20.599 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:09:20.609 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:09:20.619 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:09:20.674 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-03-21 17:09:20.679 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 56.5205ms
+2025-03-21 17:09:20.681 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:09:20.682 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 400 null application/problem+json; charset=utf-8 94.3854ms
+2025-03-21 17:12:05.107 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/register - null null
+2025-03-21 17:12:05.133 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:12:05.135 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/register - 204 null null 28.8585ms
+2025-03-21 17:12:05.139 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 55
+2025-03-21 17:12:05.147 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:12:05.148 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:12:05.150 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:12:05.161 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-03-21 17:12:05.163 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 11.4006ms
+2025-03-21 17:12:05.165 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:12:05.167 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 400 null application/problem+json; charset=utf-8 27.6994ms
+2025-03-21 17:12:29.497 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/register - null null
+2025-03-21 17:12:29.525 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:12:29.532 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/register - 204 null null 36.2369ms
+2025-03-21 17:12:29.535 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 55
+2025-03-21 17:12:29.542 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:12:29.544 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:12:29.545 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:12:29.557 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-03-21 17:12:29.559 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 9.4681ms
+2025-03-21 17:12:29.562 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:12:29.567 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 400 null application/problem+json; charset=utf-8 31.5989ms
+2025-03-21 17:12:38.765 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/register - null null
+2025-03-21 17:12:38.782 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:12:38.787 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/register - 204 null null 18.572ms
+2025-03-21 17:12:38.791 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 55
+2025-03-21 17:12:38.803 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:12:38.805 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:12:38.807 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:12:38.812 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-03-21 17:12:38.817 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 6.4425ms
+2025-03-21 17:12:38.819 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:12:38.822 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 400 null application/problem+json; charset=utf-8 30.94ms
+2025-03-21 17:14:50.216 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/register - null null
+2025-03-21 17:14:50.237 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:14:50.239 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/register - 204 null null 29.3981ms
+2025-03-21 17:14:50.243 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 55
+2025-03-21 17:14:50.247 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:14:50.249 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:14:50.252 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:14:50.258 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-03-21 17:14:50.260 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 4.4759ms
+2025-03-21 17:14:50.262 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:14:50.264 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 400 null application/problem+json; charset=utf-8 22.4533ms
+2025-03-21 17:16:28.788 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/register - null null
+2025-03-21 17:16:28.812 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:16:28.819 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/register - 204 null null 32.2413ms
+2025-03-21 17:16:28.824 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 51
+2025-03-21 17:16:28.830 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:16:28.831 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:16:28.834 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:16:29.075 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 17:16:29.356 +05:30 [INF] Executed DbCommand (69ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__email_0
+2025-03-21 17:16:29.375 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2025-03-21 17:16:29.654 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Email], [FirstName], [IsDeleted], [LastName], [PasswordHash], [PasswordSalt], [Phone])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-03-21 17:16:29.678 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__roleName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE LOWER([r].[role_name]) = @__roleName_0
+2025-03-21 17:16:29.693 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UsersRoles] ([Id], [Role_Id], [User_Id])
+VALUES (@p0, @p1, @p2);
+2025-03-21 17:16:29.698 +05:30 [INF] User registered successfully with Email: Rachit@gmail.com
+2025-03-21 17:16:29.701 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 622.7038ms.
+2025-03-21 17:16:29.705 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.User, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 17:16:29.708 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 871.3575ms
+2025-03-21 17:16:29.710 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-03-21 17:16:29.713 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 200 null application/json; charset=utf-8 890.0009ms
+2025-03-21 17:18:18.845 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 60
+2025-03-21 17:18:18.860 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:18:18.861 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 17:18:18.916 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:18:18.993 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 17:18:19.079 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 17:18:19.390 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 17:18:19.542 +05:30 [INF] User logged in successfully: Rachit@gmail.com
+2025-03-21 17:18:19.543 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 548.492ms.
+2025-03-21 17:18:19.546 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 17:18:19.564 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 646.5676ms
+2025-03-21 17:18:19.566 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 17:18:19.568 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 723.4636ms
+2025-03-21 17:18:47.177 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-03-21 17:18:47.211 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:18:47.214 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 37.8728ms
+2025-03-21 17:18:47.216 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 51
+2025-03-21 17:18:47.222 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:18:47.224 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 17:18:47.226 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:18:47.278 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 17:18:47.289 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 17:18:47.518 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 17:18:47.522 +05:30 [INF] User logged in successfully: Rachit@gmail.com
+2025-03-21 17:18:47.523 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 243.4758ms.
+2025-03-21 17:18:47.525 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 17:18:47.528 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 299.0116ms
+2025-03-21 17:18:47.530 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 17:18:47.532 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 316.4201ms
+2025-03-21 17:19:12.963 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-03-21 17:19:13.002 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:19:13.004 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 41.6342ms
+2025-03-21 17:19:13.008 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 51
+2025-03-21 17:19:13.013 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:19:13.015 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 17:19:13.017 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:19:13.071 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 17:19:13.083 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 17:19:13.315 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 17:19:13.319 +05:30 [INF] User logged in successfully: Rachit@gmail.com
+2025-03-21 17:19:13.320 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 247.3823ms.
+2025-03-21 17:19:13.323 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 17:19:13.325 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 305.0421ms
+2025-03-21 17:19:13.327 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 17:19:13.331 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 323.3003ms
+2025-03-21 17:20:05.025 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-03-21 17:20:05.053 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:20:05.055 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 29.5896ms
+2025-03-21 17:20:05.058 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 51
+2025-03-21 17:20:05.064 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:20:05.065 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 17:20:05.066 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 17:20:05.105 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 17:20:05.115 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 17:20:05.355 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 17:20:05.359 +05:30 [INF] User logged in successfully: Rachit@gmail.com
+2025-03-21 17:20:05.361 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 253.9338ms.
+2025-03-21 17:20:05.364 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 17:20:05.366 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 296.7596ms
+2025-03-21 17:20:05.368 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 17:20:05.370 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 312.3422ms
+2025-03-21 17:54:32.559 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 185
+2025-03-21 17:54:32.615 +05:30 [INF] CORS policy execution successful.
+2025-03-21 17:54:33.014 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-03-21 17:54:33.076 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-03-21 17:54:33.364 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 17:54:33.388 +05:30 [ERR] AddUser failed: Access Denied. Resctricted by Admin
+2025-03-21 17:54:33.393 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 26.8256ms.
+2025-03-21 17:54:33.396 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 17:54:33.417 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 336.5798ms
+2025-03-21 17:54:33.418 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-03-21 17:54:33.419 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 866.7498ms
+2025-03-21 18:00:17.605 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:00:17.616 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:00:17.621 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 18.8391ms
+2025-03-21 18:00:17.624 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:00:17.637 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:00:17.649 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:00:17.674 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:00:17.679 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:00:17.687 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:00:17.689 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 65.3438ms
+2025-03-21 18:00:45.315 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-03-21 18:00:45.330 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:00:45.332 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 18.0732ms
+2025-03-21 18:00:45.342 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-03-21 18:00:45.346 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:00:45.347 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:00:45.351 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 18:00:45.495 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 18:00:45.741 +05:30 [INF] Executed DbCommand (64ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 18:00:45.926 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 18:00:45.931 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-03-21 18:00:45.933 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 436.1664ms.
+2025-03-21 18:00:45.935 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 18:00:45.941 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 586.5063ms
+2025-03-21 18:00:45.942 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:00:45.944 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 603.4296ms
+2025-03-21 18:00:45.975 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:00:45.979 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:00:45.980 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 5.8092ms
+2025-03-21 18:00:45.983 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:00:45.987 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:00:45.988 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:00:45.991 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:00:45.992 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:00:45.993 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:00:45.994 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 10.976ms
+2025-03-21 18:01:52.545 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:01:52.562 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:01:52.564 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 18.7935ms
+2025-03-21 18:01:52.567 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:01:52.569 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:01:52.570 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:01:52.572 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:01:52.574 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:01:52.576 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:01:52.576 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 10.1808ms
+2025-03-21 18:01:53.347 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:01:53.350 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:01:53.351 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:01:53.353 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:01:53.354 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:01:53.356 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:01:53.357 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 9.9842ms
+2025-03-21 18:01:54.012 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:01:54.015 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:01:54.016 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:01:54.018 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:01:54.020 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:01:54.021 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:01:54.022 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 10.8516ms
+2025-03-21 18:02:03.136 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-03-21 18:02:03.139 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:02:03.140 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 3.7123ms
+2025-03-21 18:02:03.142 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 51
+2025-03-21 18:02:03.147 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:02:03.148 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:02:03.149 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 18:02:03.203 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 18:02:03.213 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 18:02:03.355 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 18:02:03.358 +05:30 [INF] User logged in successfully: Rachit@gmail.com
+2025-03-21 18:02:03.359 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 154.4662ms.
+2025-03-21 18:02:03.361 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 18:02:03.363 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 212.1751ms
+2025-03-21 18:02:03.365 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:02:03.366 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 224.4527ms
+2025-03-21 18:02:03.385 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:02:03.387 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:02:03.388 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 3.6712ms
+2025-03-21 18:02:03.391 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:02:03.394 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:02:03.396 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:02:03.399 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:02:03.401 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:02:03.402 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:02:03.403 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 12.587ms
+2025-03-21 18:06:20.250 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-03-21 18:06:20.254 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:06:20.256 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 5.6168ms
+2025-03-21 18:06:20.258 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-03-21 18:06:20.261 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:06:20.263 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:06:20.264 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 18:06:20.308 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 18:06:20.331 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 18:06:20.474 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 18:06:20.477 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-03-21 18:06:20.478 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 167.9469ms.
+2025-03-21 18:06:20.480 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 18:06:20.483 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 215.8197ms
+2025-03-21 18:06:20.484 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:06:20.485 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 227.7877ms
+2025-03-21 18:06:20.499 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:06:20.502 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:06:20.503 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 4.301ms
+2025-03-21 18:06:20.506 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:06:20.509 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:06:20.511 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:06:20.515 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:06:20.516 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:06:20.517 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:06:20.519 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 12.4391ms
+2025-03-21 18:06:32.748 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:06:32.752 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:06:32.753 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 4.5018ms
+2025-03-21 18:06:32.756 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:06:32.760 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:06:32.761 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:06:32.765 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:06:32.766 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:06:32.767 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:06:32.768 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 12.5218ms
+2025-03-21 18:06:52.811 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:06:52.813 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:06:52.814 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 3.2376ms
+2025-03-21 18:06:52.817 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:06:52.820 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:06:52.821 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:06:52.824 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:06:52.825 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:06:52.827 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:06:52.828 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 11.9216ms
+2025-03-21 18:26:55.820 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-03-21 18:26:55.844 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:26:55.853 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 35.0183ms
+2025-03-21 18:26:55.854 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-03-21 18:26:55.867 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:26:55.881 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:26:55.896 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 18:26:56.110 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 18:26:56.378 +05:30 [INF] Executed DbCommand (105ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 18:26:56.572 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 18:26:56.585 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-03-21 18:26:56.588 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 475.9304ms.
+2025-03-21 18:26:56.591 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 18:26:56.599 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 700.4282ms
+2025-03-21 18:26:56.600 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:26:56.602 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 748.8509ms
+2025-03-21 18:27:07.941 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:27:07.957 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:27:07.958 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 17.0205ms
+2025-03-21 18:27:07.961 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:27:07.969 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:27:07.975 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:27:07.981 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:27:07.983 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:27:07.984 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:27:07.985 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 24.1169ms
+2025-03-21 18:27:16.859 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:27:16.862 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:27:16.863 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 4.1284ms
+2025-03-21 18:27:16.865 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:27:16.869 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:27:16.872 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:27:16.874 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:27:16.875 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:27:16.876 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:27:16.876 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 11.7536ms
+2025-03-21 18:27:20.821 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:27:20.824 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:27:20.827 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:27:20.830 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:27:20.832 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:27:20.835 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:27:20.837 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 16.3526ms
+2025-03-21 18:27:34.872 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/user - null null
+2025-03-21 18:27:34.875 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:27:34.876 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/user - 204 null null 4.6578ms
+2025-03-21 18:27:34.878 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/user - application/json null
+2025-03-21 18:27:34.882 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:27:34.885 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-21 18:27:34.889 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-21 18:27:34.892 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:27:34.893 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-03-21 18:27:34.895 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/user - 405 0 null 16.7047ms
+2025-03-21 18:29:49.978 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-03-21 18:29:49.989 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:29:50.016 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 38.3493ms
+2025-03-21 18:29:50.017 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-03-21 18:29:50.021 +05:30 [INF] CORS policy execution successful.
+2025-03-21 18:29:50.022 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:29:50.025 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-03-21 18:29:50.075 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-03-21 18:29:50.108 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-03-21 18:29:50.262 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-03-21 18:29:50.265 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-03-21 18:29:50.266 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 190.0301ms.
+2025-03-21 18:29:50.268 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-21 18:29:50.270 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 242.7711ms
+2025-03-21 18:29:50.271 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-03-21 18:29:50.273 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 255.6058ms

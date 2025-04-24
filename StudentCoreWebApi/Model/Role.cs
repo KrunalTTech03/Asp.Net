@@ -7,5 +7,6 @@ namespace StudentCoreWebApi.Model
         [Key]
         public Guid role_Id { get; set; }
         public string role_name { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

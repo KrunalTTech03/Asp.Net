@@ -1,0 +1,171 @@
+2025-04-22 14:18:33.671 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-22 14:18:34.276 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-22 14:18:34.278 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-22 14:18:34.437 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-22 14:18:34.441 +05:30 [INF] Hosting environment: Development
+2025-04-22 14:18:34.444 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-22 14:18:35.423 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-22 14:18:35.854 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 441.3244ms
+2025-04-22 14:18:35.874 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-22 14:18:35.874 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-22 14:18:35.898 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 25.0248ms
+2025-04-22 14:18:35.940 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.2603ms
+2025-04-22 14:18:35.978 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-22 14:18:36.003 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.072ms
+2025-04-22 14:22:45.514 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-22 14:22:45.534 +05:30 [INF] CORS policy execution successful.
+2025-04-22 14:22:45.765 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-22 14:22:45.836 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-22 14:22:46.730 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-22 14:22:49.248 +05:30 [INF] Executed DbCommand (218ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-22 14:22:50.272 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-22 14:22:50.307 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-22 14:22:50.340 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-22 14:22:50.396 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-22 14:22:50.406 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3665.2827ms.
+2025-04-22 14:22:50.430 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 14:22:50.467 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 4620.0727ms
+2025-04-22 14:22:50.471 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-22 14:22:50.489 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 4975.6174ms
+2025-04-22 18:51:49.916 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-22 18:51:50.525 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-22 18:51:50.533 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-22 18:51:50.675 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-22 18:51:50.677 +05:30 [INF] Hosting environment: Development
+2025-04-22 18:51:50.678 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-22 18:51:51.167 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-22 18:51:51.521 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 361.1218ms
+2025-04-22 18:51:51.535 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-22 18:51:51.535 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-22 18:51:51.546 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 11.6746ms
+2025-04-22 18:51:51.597 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.3594ms
+2025-04-22 18:51:51.713 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-22 18:51:51.741 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.9453ms
+2025-04-22 19:09:53.711 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-22 19:09:54.244 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-22 19:09:54.247 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-22 19:09:54.392 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-22 19:09:54.394 +05:30 [INF] Hosting environment: Development
+2025-04-22 19:09:54.396 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-22 19:09:55.184 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-22 19:09:55.555 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 381.3068ms
+2025-04-22 19:09:55.567 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-22 19:09:55.568 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-22 19:09:55.580 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 12.4315ms
+2025-04-22 19:09:55.632 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.4216ms
+2025-04-22 19:09:55.757 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-22 19:09:55.789 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.1375ms
+2025-04-22 19:10:15.136 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-22 19:10:15.151 +05:30 [INF] CORS policy execution successful.
+2025-04-22 19:10:15.265 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-22 19:10:15.311 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-22 19:10:15.880 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-22 19:10:17.482 +05:30 [INF] Executed DbCommand (129ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-22 19:10:18.073 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-22 19:10:18.095 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-22 19:10:18.114 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-22 19:10:18.158 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-22 19:10:18.165 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2277.0361ms.
+2025-04-22 19:10:18.177 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 19:10:18.206 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 2887.1998ms
+2025-04-22 19:10:18.210 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-22 19:10:18.224 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 3087.868ms
+2025-04-22 19:14:06.915 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Menu/create - application/json 106
+2025-04-22 19:14:06.951 +05:30 [INF] CORS policy execution successful.
+2025-04-22 19:14:07.082 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:14:07.103 +05:30 [INF] Route matched with {action = "CreateMenu", controller = "Menu"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateMenu(StudentCoreWebApi.DTOs.MenuDTO) on controller StudentCoreWebApi.Controllers.MenuController (StudentCoreWebApi).
+2025-04-22 19:14:07.173 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-04-22 19:14:07.215 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi) in 107.9387ms
+2025-04-22 19:14:07.217 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:14:07.219 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Menu/create - 400 null application/problem+json; charset=utf-8 308.5241ms
+2025-04-22 19:14:43.514 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Menu/create - application/json 164
+2025-04-22 19:14:43.541 +05:30 [INF] CORS policy execution successful.
+2025-04-22 19:14:43.548 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:14:43.549 +05:30 [INF] Route matched with {action = "CreateMenu", controller = "Menu"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateMenu(StudentCoreWebApi.DTOs.MenuDTO) on controller StudentCoreWebApi.Controllers.MenuController (StudentCoreWebApi).
+2025-04-22 19:14:43.556 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-04-22 19:14:43.558 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi) in 6.0277ms
+2025-04-22 19:14:43.560 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:14:43.562 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Menu/create - 400 null application/problem+json; charset=utf-8 47.8928ms
+2025-04-22 19:15:43.329 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Menu/create - application/json 106
+2025-04-22 19:15:43.341 +05:30 [INF] CORS policy execution successful.
+2025-04-22 19:15:43.342 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:15:43.344 +05:30 [INF] Route matched with {action = "CreateMenu", controller = "Menu"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateMenu(StudentCoreWebApi.DTOs.MenuDTO) on controller StudentCoreWebApi.Controllers.MenuController (StudentCoreWebApi).
+2025-04-22 19:15:43.515 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-22 19:15:43.831 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Guid), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Menus] ([Id], [Icon], [Order], [ParentMenuId], [Path], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-04-22 19:15:43.849 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 332.1281ms.
+2025-04-22 19:15:43.852 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-22 19:15:43.859 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi) in 511.4302ms
+2025-04-22 19:15:43.861 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:15:43.863 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Menu/create - 200 null application/json; charset=utf-8 536.9075ms
+2025-04-22 19:18:22.003 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Menu/create - application/json 96
+2025-04-22 19:18:22.007 +05:30 [INF] CORS policy execution successful.
+2025-04-22 19:18:22.008 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:18:22.010 +05:30 [INF] Route matched with {action = "CreateMenu", controller = "Menu"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateMenu(StudentCoreWebApi.DTOs.MenuDTO) on controller StudentCoreWebApi.Controllers.MenuController (StudentCoreWebApi).
+2025-04-22 19:18:22.037 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-22 19:18:22.117 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Guid), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Menus] ([Id], [Icon], [Order], [ParentMenuId], [Path], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-04-22 19:18:22.121 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 81.8677ms.
+2025-04-22 19:18:22.124 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-22 19:18:22.125 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi) in 112.505ms
+2025-04-22 19:18:22.128 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:18:22.130 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Menu/create - 200 null application/json; charset=utf-8 126.7254ms
+2025-04-22 19:20:44.613 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Menu/create - application/json 165
+2025-04-22 19:20:44.623 +05:30 [INF] CORS policy execution successful.
+2025-04-22 19:20:44.631 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:20:44.638 +05:30 [INF] Route matched with {action = "CreateMenu", controller = "Menu"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateMenu(StudentCoreWebApi.DTOs.MenuDTO) on controller StudentCoreWebApi.Controllers.MenuController (StudentCoreWebApi).
+2025-04-22 19:20:44.745 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-22 19:20:44.796 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Guid), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Menus] ([Id], [Icon], [Order], [ParentMenuId], [Path], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-04-22 19:20:44.799 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 52.336ms.
+2025-04-22 19:20:44.801 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-22 19:20:44.803 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi) in 161.2559ms
+2025-04-22 19:20:44.804 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.MenuController.CreateMenu (StudentCoreWebApi)'
+2025-04-22 19:20:44.806 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Menu/create - 200 null application/json; charset=utf-8 195.6279ms
+2025-04-22 19:52:05.241 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-22 19:52:05.844 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-22 19:52:05.848 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-22 19:52:06.140 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-22 19:52:06.143 +05:30 [INF] Hosting environment: Development
+2025-04-22 19:52:06.145 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-22 19:52:06.895 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-22 19:52:07.285 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 399.1645ms
+2025-04-22 19:52:07.311 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-22 19:52:07.312 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-22 19:52:07.325 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 14.0376ms
+2025-04-22 19:52:07.384 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 72.8619ms
+2025-04-22 19:52:07.446 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-22 19:52:07.491 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.2261ms

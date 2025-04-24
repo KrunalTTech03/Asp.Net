@@ -1,0 +1,1674 @@
+2025-04-04 10:18:15.960 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-04 10:18:16.650 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-04 10:18:16.652 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-04 10:18:16.786 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-04 10:18:16.789 +05:30 [INF] Hosting environment: Development
+2025-04-04 10:18:16.791 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-04 10:18:20.833 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-04 10:18:21.353 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 531.3732ms
+2025-04-04 10:18:21.420 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-04 10:18:21.420 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-04 10:18:21.446 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 26.5471ms
+2025-04-04 10:18:21.534 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 114.0481ms
+2025-04-04 10:18:21.593 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-04 10:18:21.623 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 29.6183ms
+2025-04-04 10:18:40.630 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-04 10:18:40.655 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:18:40.801 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 10:18:40.864 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-04 10:18:41.699 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:18:44.656 +05:30 [INF] Executed DbCommand (389ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-04 10:18:45.655 +05:30 [INF] Executed DbCommand (35ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:18:45.708 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-04 10:18:45.718 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4009.4747ms.
+2025-04-04 10:18:45.732 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-04 10:18:45.764 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 4889.7741ms
+2025-04-04 10:18:45.768 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 10:18:45.778 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 5147.93ms
+2025-04-04 10:19:14.714 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-04-04 10:19:14.737 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:14.743 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 29.242ms
+2025-04-04 10:19:14.748 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-04-04 10:19:14.761 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:14.771 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 10:19:14.774 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-04 10:19:14.814 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:19:14.865 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-04 10:19:15.109 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:15.116 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-04 10:19:15.119 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 301.9097ms.
+2025-04-04 10:19:15.124 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-04 10:19:15.128 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 349.9588ms
+2025-04-04 10:19:15.130 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 10:19:15.134 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 386.435ms
+2025-04-04 10:19:15.272 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 10:19:15.279 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:15.283 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 12.0851ms
+2025-04-04 10:19:15.289 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 10:19:15.298 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:15.394 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 10:19:15.406 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 10:19:15.448 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:19:15.576 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 10:19:15.595 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 142.8809ms.
+2025-04-04 10:19:15.600 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 10:19:15.612 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 200.3705ms
+2025-04-04 10:19:15.615 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 10:19:15.619 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 330.6346ms
+2025-04-04 10:19:15.780 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 10:19:15.789 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:15.791 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 11.7977ms
+2025-04-04 10:19:15.796 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 10:19:15.812 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:15.832 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 10:19:15.847 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 10:19:15.904 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:19:15.910 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 10:19:15.975 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 10:19:16.036 +05:30 [INF] Executed DbCommand (39ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 10:19:16.068 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:16.179 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:16.188 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:16.201 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:16.209 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:16.221 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:16.229 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:16.240 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:16.248 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:16.262 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:16.269 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 10:19:16.271 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 364.0245ms.
+2025-04-04 10:19:16.276 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 10:19:16.295 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 441.16ms
+2025-04-04 10:19:16.298 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 10:19:16.300 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 504.6314ms
+2025-04-04 10:19:25.373 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=10 - null null
+2025-04-04 10:19:25.385 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:25.388 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=10 - 204 null null 16.4498ms
+2025-04-04 10:19:25.396 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=10 - null null
+2025-04-04 10:19:25.407 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:25.413 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 10:19:25.417 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 10:19:25.519 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:19:25.522 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 10
+2025-04-04 10:19:25.537 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 10:19:25.551 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 10:19:25.563 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.578 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.593 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.610 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.623 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.640 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.649 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.662 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.670 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.678 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.684 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.694 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.702 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.709 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.715 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.722 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.729 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.734 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.741 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:25.749 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:25.754 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 10:19:25.756 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 234.479ms.
+2025-04-04 10:19:25.761 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 10:19:25.765 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 344.8607ms
+2025-04-04 10:19:25.769 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 10:19:25.772 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=10 - 200 null application/json; charset=utf-8 376.9344ms
+2025-04-04 10:19:30.810 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 10:19:30.815 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:30.817 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 8.1273ms
+2025-04-04 10:19:30.823 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 10:19:30.832 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:19:30.837 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 10:19:30.840 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 10:19:30.875 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:19:30.877 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 10:19:30.894 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 10:19:30.908 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 10:19:30.918 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:30.934 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:30.947 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:30.963 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:30.974 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:30.990 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:30.999 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:31.026 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:31.036 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:19:31.052 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:19:31.057 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 10:19:31.058 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 181.0384ms.
+2025-04-04 10:19:31.063 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 10:19:31.065 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 221.2853ms
+2025-04-04 10:19:31.070 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 10:19:31.073 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 249.673ms
+2025-04-04 10:25:55.165 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 10:25:55.194 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:25:55.196 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 10:25:55.199 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 10:25:55.241 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:25:55.442 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 10:25:55.448 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 203.5828ms.
+2025-04-04 10:25:55.451 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 10:25:55.455 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 251.0628ms
+2025-04-04 10:25:55.458 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 10:25:55.461 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 300.7309ms
+2025-04-04 10:25:55.625 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 10:25:55.631 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:25:55.637 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Manager)
+2025-04-04 10:25:55.647 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-04-04 10:25:55.649 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 401 0 null 24.7766ms
+2025-04-04 10:26:02.961 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-04-04 10:26:02.967 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:26:02.968 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 8.087ms
+2025-04-04 10:26:02.971 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 70
+2025-04-04 10:26:02.980 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:26:02.983 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 10:26:02.985 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-04 10:26:03.021 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:26:03.049 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-04 10:26:03.310 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 285.3227ms.
+2025-04-04 10:26:03.315 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-04 10:26:03.319 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 330.3082ms
+2025-04-04 10:26:03.323 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 10:26:03.327 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 401 null application/json; charset=utf-8 355.9462ms
+2025-04-04 10:26:32.175 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-04-04 10:26:32.230 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:26:32.232 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 63.7926ms
+2025-04-04 10:26:32.239 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-04-04 10:26:32.249 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:26:32.252 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 10:26:32.255 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-04 10:26:32.286 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:26:32.305 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-04 10:26:32.583 +05:30 [INF] Executed DbCommand (48ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:26:32.589 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-04 10:26:32.590 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 300.5713ms.
+2025-04-04 10:26:32.593 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-04 10:26:32.597 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 338.7081ms
+2025-04-04 10:26:32.600 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 10:26:32.603 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 364.5531ms
+2025-04-04 10:26:32.711 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 10:26:32.720 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:26:32.723 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 13.017ms
+2025-04-04 10:26:32.728 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 10:26:32.740 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:26:32.743 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 10:26:32.745 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 10:26:32.782 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:26:32.792 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 10:26:32.798 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 12.8531ms.
+2025-04-04 10:26:32.804 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 10:26:32.808 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 59.2359ms
+2025-04-04 10:26:32.812 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 10:26:32.815 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 87.3098ms
+2025-04-04 10:26:33.172 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 10:26:33.180 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:26:33.184 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 12.4346ms
+2025-04-04 10:26:33.189 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 10:26:33.200 +05:30 [INF] CORS policy execution successful.
+2025-04-04 10:26:33.203 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 10:26:33.205 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 10:26:33.255 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 10:26:33.258 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 10:26:33.271 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 10:26:33.288 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 10:26:33.300 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:26:33.320 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:26:33.336 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:26:33.355 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:26:33.367 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:26:33.379 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:26:33.387 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:26:33.397 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:26:33.406 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 10:26:33.418 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 10:26:33.423 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 10:26:33.425 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 166.372ms.
+2025-04-04 10:26:33.427 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 10:26:33.430 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 219.1106ms
+2025-04-04 10:26:33.433 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 10:26:33.435 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 246.4155ms
+2025-04-04 11:51:15.729 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-04 11:51:16.189 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-04 11:51:16.193 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-04 11:51:16.321 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-04 11:51:16.323 +05:30 [INF] Hosting environment: Development
+2025-04-04 11:51:16.325 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-04 11:51:16.808 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-04 11:51:17.184 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 385.2785ms
+2025-04-04 11:51:17.202 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-04 11:51:17.204 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-04 11:51:17.214 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 11.6264ms
+2025-04-04 11:51:17.270 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 65.9808ms
+2025-04-04 11:51:17.335 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-04 11:51:17.355 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.2931ms
+2025-04-04 11:54:48.978 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-04 11:54:49.127 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 150.6492ms
+2025-04-04 11:54:49.147 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-04 11:54:49.147 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-04 11:54:49.152 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 5.4001ms
+2025-04-04 11:54:49.179 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.189ms
+2025-04-04 11:54:49.209 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-04 11:54:49.227 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.9225ms
+2025-04-04 11:54:56.474 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-04 11:54:56.878 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-04 11:54:56.880 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-04 11:54:56.976 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-04 11:54:56.978 +05:30 [INF] Hosting environment: Development
+2025-04-04 11:54:56.979 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-04 11:54:57.615 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-04 11:54:58.499 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 891.2108ms
+2025-04-04 11:54:58.506 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-04 11:54:58.506 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-04 11:54:58.521 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 15.8719ms
+2025-04-04 11:54:58.571 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 66.0357ms
+2025-04-04 11:54:58.756 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-04 11:54:58.780 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.7589ms
+2025-04-04 11:55:10.937 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-04 11:55:10.950 +05:30 [INF] CORS policy execution successful.
+2025-04-04 11:55:11.049 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 11:55:11.086 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-04 11:55:11.562 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 11:55:12.985 +05:30 [INF] Executed DbCommand (120ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-04 11:55:13.446 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 11:55:13.487 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-04 11:55:13.493 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1925.3872ms.
+2025-04-04 11:55:13.503 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-04 11:55:13.527 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 2433.5354ms
+2025-04-04 11:55:13.531 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 11:55:13.541 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 2603.8019ms
+2025-04-04 11:55:43.829 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/register - application/json 83
+2025-04-04 11:55:43.844 +05:30 [INF] CORS policy execution successful.
+2025-04-04 11:55:43.846 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-04-04 11:55:43.852 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(StudentCoreWebApi.DTOs.RegisterRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-04 11:55:43.887 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 11:55:43.919 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__email_0
+2025-04-04 11:55:43.934 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2025-04-04 11:55:44.357 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Email], [FirstName], [IsDeleted], [LastName], [PasswordHash], [PasswordSalt], [Phone])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-04-04 11:55:44.513 +05:30 [INF] Executed DbCommand (120ms) [Parameters=[@__roleName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE LOWER([r].[role_name]) = @__roleName_0
+2025-04-04 11:55:44.549 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UsersRoles] ([Id], [Role_Id], [User_Id])
+VALUES (@p0, @p1, @p2);
+2025-04-04 11:55:48.525 +05:30 [INF] User registered successfully with Email: meetparmar7156@gmail.com
+2025-04-04 11:55:48.528 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4639.1086ms.
+2025-04-04 11:55:48.531 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.User, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-04 11:55:48.536 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi) in 4682.0986ms
+2025-04-04 11:55:48.539 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Register (StudentCoreWebApi)'
+2025-04-04 11:55:48.541 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/register - 200 null application/json; charset=utf-8 4712.8557ms
+2025-04-04 12:53:06.691 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-04-04 12:53:06.726 +05:30 [INF] CORS policy execution successful.
+2025-04-04 12:53:06.749 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 62.6168ms
+2025-04-04 12:53:06.752 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-04-04 12:53:06.762 +05:30 [INF] CORS policy execution successful.
+2025-04-04 12:53:06.783 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 12:53:06.798 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-04 12:53:06.987 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 12:53:07.224 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-04 12:53:07.381 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 12:53:07.394 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-04 12:53:07.397 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 406.7406ms.
+2025-04-04 12:53:07.400 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-04 12:53:07.401 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 599.3141ms
+2025-04-04 12:53:07.403 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 12:53:07.405 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 652.9231ms
+2025-04-04 12:53:07.481 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 12:53:07.485 +05:30 [INF] CORS policy execution successful.
+2025-04-04 12:53:07.486 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 5.4432ms
+2025-04-04 12:53:07.490 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 12:53:07.496 +05:30 [INF] CORS policy execution successful.
+2025-04-04 12:53:07.592 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 12:53:07.609 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 12:53:07.637 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 12:53:07.676 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 12:53:07.681 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 41.8883ms.
+2025-04-04 12:53:07.682 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 12:53:07.691 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 79.2476ms
+2025-04-04 12:53:07.693 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 12:53:07.694 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 204.4362ms
+2025-04-04 12:53:07.984 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 12:53:07.988 +05:30 [INF] CORS policy execution successful.
+2025-04-04 12:53:07.989 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 5.4625ms
+2025-04-04 12:53:07.991 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 12:53:07.997 +05:30 [INF] CORS policy execution successful.
+2025-04-04 12:53:08.012 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 12:53:08.024 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 12:53:08.057 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 12:53:08.060 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 12:53:08.112 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 12:53:08.141 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 12:53:08.163 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 12:53:08.257 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 12:53:08.262 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 12:53:08.267 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 12:53:08.271 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 12:53:08.275 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 12:53:08.279 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 12:53:08.283 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 12:53:08.289 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 12:53:08.293 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 12:53:08.295 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 12:53:08.296 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 237.6184ms.
+2025-04-04 12:53:08.298 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 12:53:08.314 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 286.9639ms
+2025-04-04 12:53:08.315 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 12:53:08.317 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 326.1426ms
+2025-04-04 13:40:38.971 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 13:40:39.074 +05:30 [INF] CORS policy execution successful.
+2025-04-04 13:40:39.095 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 13:40:39.101 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 140.5397ms
+2025-04-04 13:40:39.124 +05:30 [INF] CORS policy execution successful.
+2025-04-04 13:40:39.201 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 13:40:39.236 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 13:40:39.306 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 13:40:39.345 +05:30 [INF] CORS policy execution successful.
+2025-04-04 13:40:39.348 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 47.705ms
+2025-04-04 13:40:39.390 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 13:40:39.401 +05:30 [INF] CORS policy execution successful.
+2025-04-04 13:40:39.437 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 13:40:39.442 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 13:40:39.701 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 13:40:39.840 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 13:40:39.852 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 13:40:40.114 +05:30 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 13:40:40.114 +05:30 [INF] Executed DbCommand (88ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 13:40:40.150 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 443.0621ms.
+2025-04-04 13:40:40.161 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 13:40:40.181 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 939.731ms
+2025-04-04 13:40:40.184 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 13:40:40.188 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 1093.5051ms
+2025-04-04 13:40:40.220 +05:30 [INF] Executed DbCommand (69ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 13:40:40.262 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 13:40:40.352 +05:30 [INF] Executed DbCommand (44ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 13:40:40.363 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 13:40:40.373 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 13:40:40.381 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 13:40:40.393 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 13:40:40.410 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 13:40:40.420 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 13:40:40.428 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 13:40:40.440 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 13:40:40.447 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 13:40:40.450 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 598.8736ms.
+2025-04-04 13:40:40.454 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 13:40:40.461 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 1013.9618ms
+2025-04-04 13:40:40.465 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 13:40:40.468 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 1080.1894ms
+2025-04-04 14:09:45.378 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 14:09:45.425 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:09:45.448 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 85.8286ms
+2025-04-04 14:09:45.454 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 14:09:45.517 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:09:45.580 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:09:45.587 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:09:45.590 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 9.6884ms
+2025-04-04 14:09:45.594 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:09:45.602 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:09:45.643 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 08:23:07', Current time (UTC): '04-04-2025 08:39:45'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-04 14:09:45.644 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 08:23:07', Current time (UTC): '04-04-2025 08:39:45'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-04 14:09:45.934 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 08:23:07', Current time (UTC): '04-04-2025 08:39:45'.
+2025-04-04 14:09:45.934 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 08:23:07', Current time (UTC): '04-04-2025 08:39:45'.
+2025-04-04 14:09:45.941 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:09:45.956 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 14:09:45.975 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Manager)
+2025-04-04 14:09:46.012 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-04-04 14:09:46.154 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:09:46.156 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 401 0 null 562.604ms
+2025-04-04 14:09:46.400 +05:30 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 14:09:46.420 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 262.3107ms.
+2025-04-04 14:09:46.427 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:09:46.436 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 472.8516ms
+2025-04-04 14:09:46.439 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:09:46.441 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 987.4799ms
+2025-04-04 14:10:09.714 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/auth/login - null null
+2025-04-04 14:10:09.720 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:10:09.725 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/auth/login - 204 null null 9.3193ms
+2025-04-04 14:10:09.728 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-04-04 14:10:09.735 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:10:09.738 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 08:23:07', Current time (UTC): '04-04-2025 08:40:09'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-04 14:10:09.744 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 08:23:07', Current time (UTC): '04-04-2025 08:40:09'.
+2025-04-04 14:10:09.747 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 14:10:09.750 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-04 14:10:09.870 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:10:09.948 +05:30 [INF] Executed DbCommand (53ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-04 14:10:10.252 +05:30 [INF] Executed DbCommand (45ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [RoleName]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:10:10.266 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-04 14:10:10.269 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 395.2461ms.
+2025-04-04 14:10:10.273 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-04 14:10:10.276 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 522.3887ms
+2025-04-04 14:10:10.280 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-04 14:10:10.284 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 557.2283ms
+2025-04-04 14:10:10.399 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 14:10:10.408 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:10:10.412 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 12.897ms
+2025-04-04 14:10:10.416 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 14:10:10.426 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:10:10.429 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:10:10.433 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 14:10:10.472 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:10:10.484 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 14:10:10.488 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 13.4415ms.
+2025-04-04 14:10:10.491 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:10:10.494 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 57.2401ms
+2025-04-04 14:10:10.497 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:10:10.499 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 83.325ms
+2025-04-04 14:10:10.874 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:10:10.880 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:10:10.882 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 8.5458ms
+2025-04-04 14:10:10.886 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:10:10.896 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:10:10.900 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:10:10.902 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 14:10:11.060 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:10:11.063 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 14:10:11.095 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 14:10:11.124 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 14:10:11.136 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:10:11.169 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:10:11.176 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:10:11.183 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:10:11.191 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:10:11.197 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:10:11.203 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:10:11.211 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:10:11.218 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:10:11.227 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:10:11.232 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 14:10:11.233 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 170.6517ms.
+2025-04-04 14:10:11.237 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:10:11.241 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 333.5706ms
+2025-04-04 14:10:11.244 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:10:11.246 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 360.8219ms
+2025-04-04 14:22:35.767 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/UpsertUser - null null
+2025-04-04 14:22:35.786 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:22:35.793 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/UpsertUser - 204 null null 27.6759ms
+2025-04-04 14:22:35.796 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User/UpsertUser - application/json 209
+2025-04-04 14:22:35.809 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:22:35.844 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddOrEditUser (StudentCoreWebApi)'
+2025-04-04 14:22:35.908 +05:30 [INF] Route matched with {action = "AddOrEditUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddOrEditUser(StudentCoreWebApi.DTOs.UpsertDto) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 14:22:36.202 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddOrEditUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:22:36.503 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-04-04 14:22:36.648 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@p3='?' (DbType = Guid), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [FirstName] = @p0, [LastName] = @p1, [Phone] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2025-04-04 14:22:36.721 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id], (
+    SELECT TOP(1) [r].[role_name]
+    FROM [Roles] AS [r]
+    WHERE [r].[role_Id] = [u].[Role_Id]) AS [Role_Name]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:22:36.730 +05:30 [INF] AddOrEditUser: Operation succeeded.
+2025-04-04 14:22:36.732 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddOrEditUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 526.8266ms.
+2025-04-04 14:22:36.735 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:22:36.749 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddOrEditUser (StudentCoreWebApi) in 836.96ms
+2025-04-04 14:22:36.752 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddOrEditUser (StudentCoreWebApi)'
+2025-04-04 14:22:36.755 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User/UpsertUser - 200 null application/json; charset=utf-8 959.655ms
+2025-04-04 14:22:44.072 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 14:22:44.078 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:22:44.080 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 8.1446ms
+2025-04-04 14:22:44.085 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 14:22:44.095 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:22:44.098 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:22:44.104 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 14:22:44.152 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:22:44.169 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 14:22:44.173 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 18.1365ms.
+2025-04-04 14:22:44.178 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:22:44.182 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 75.4112ms
+2025-04-04 14:22:44.185 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:22:44.187 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 103.0915ms
+2025-04-04 14:22:44.576 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:22:44.583 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:22:44.587 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 11.1352ms
+2025-04-04 14:22:44.591 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:22:44.601 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:22:44.605 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:22:44.607 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 14:22:44.644 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:22:44.646 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 14:22:44.660 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 14:22:44.670 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 14:22:44.681 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:22:44.694 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:22:44.701 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:22:44.708 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:22:44.715 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:22:44.724 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:22:44.729 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:22:44.737 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:22:44.745 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:22:44.751 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:22:44.755 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 14:22:44.757 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 110.9135ms.
+2025-04-04 14:22:44.760 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:22:44.764 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 153.2687ms
+2025-04-04 14:22:44.767 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:22:44.770 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 179.238ms
+2025-04-04 14:28:01.377 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:01.385 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:01.388 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 12.5649ms
+2025-04-04 14:28:01.393 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:01.403 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:01.408 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:01.411 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 14:28:01.474 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:01.533 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 14:28:01.538 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 61.3391ms.
+2025-04-04 14:28:01.541 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:01.544 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 129.7843ms
+2025-04-04 14:28:01.547 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:01.549 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 157.5377ms
+2025-04-04 14:28:02.299 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:02.305 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:02.307 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 8.7343ms
+2025-04-04 14:28:02.311 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:02.318 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:02.320 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:02.323 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 14:28:02.392 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:02.394 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 14:28:02.406 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 14:28:02.418 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 14:28:02.428 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:02.438 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:02.444 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:02.466 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:02.472 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:02.478 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:02.484 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:02.491 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:02.497 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:02.503 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:02.507 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 14:28:02.508 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 114.7272ms.
+2025-04-04 14:28:02.511 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:02.514 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 188.1481ms
+2025-04-04 14:28:02.517 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:02.519 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 209.2503ms
+2025-04-04 14:28:13.328 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:13.335 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:13.343 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 14.6323ms
+2025-04-04 14:28:13.352 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:13.363 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:13.366 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:13.369 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 14:28:13.435 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:13.451 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 14:28:13.455 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 16.8061ms.
+2025-04-04 14:28:13.458 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:13.462 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 85.3971ms
+2025-04-04 14:28:13.466 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:13.468 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 122.2468ms
+2025-04-04 14:28:14.304 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:14.309 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:14.310 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 6.454ms
+2025-04-04 14:28:14.313 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:14.320 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:14.321 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:14.324 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 14:28:14.391 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:14.393 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 14:28:14.509 +05:30 [INF] Executed DbCommand (113ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 14:28:15.929 +05:30 [INF] Executed DbCommand (1,410ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 14:28:19.324 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:19.330 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:19.332 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 7.2456ms
+2025-04-04 14:28:19.337 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:19.348 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:19.351 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:19.353 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 14:28:19.418 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:19.467 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 14:28:19.470 +05:30 [INF] Executed DbCommand (3,536ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:19.472 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 51.8835ms.
+2025-04-04 14:28:19.478 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:19.481 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 124.122ms
+2025-04-04 14:28:19.482 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:19.484 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:19.489 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:19.490 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 153.4089ms
+2025-04-04 14:28:19.496 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:19.505 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:19.510 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:19.516 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:19.523 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:19.528 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:19.534 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:19.539 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 14:28:19.540 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5147.1012ms.
+2025-04-04 14:28:19.543 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:19.546 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 5219.7358ms
+2025-04-04 14:28:19.549 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:19.551 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 5238.3203ms
+2025-04-04 14:28:20.316 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:20.338 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:20.339 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 23.9249ms
+2025-04-04 14:28:20.343 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:20.352 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:20.354 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:20.356 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 14:28:20.400 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:20.403 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 14:28:20.419 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 14:28:20.429 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 14:28:20.438 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:20.451 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:20.456 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:20.462 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:20.469 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:20.474 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:20.478 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:20.484 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:20.490 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:20.496 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:20.500 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 14:28:20.501 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 98.6493ms.
+2025-04-04 14:28:20.505 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:20.507 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 147.1739ms
+2025-04-04 14:28:20.510 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:20.512 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 169.1047ms
+2025-04-04 14:28:52.331 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:52.354 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:52.356 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 25.067ms
+2025-04-04 14:28:52.361 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:52.371 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:52.374 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:52.375 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 14:28:52.428 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:52.445 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 14:28:52.448 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 17.4938ms.
+2025-04-04 14:28:52.451 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:52.454 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 75.7905ms
+2025-04-04 14:28:52.457 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:52.459 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 99.1652ms
+2025-04-04 14:28:53.311 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:53.329 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:53.331 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 20.0808ms
+2025-04-04 14:28:53.338 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:53.401 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:53.404 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:53.407 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 14:28:53.458 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:53.460 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 14:28:53.488 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 14:28:53.511 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 14:28:53.532 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:53.550 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:53.567 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:53.574 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:53.579 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:53.585 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:53.590 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:53.596 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:53.602 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:53.607 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:53.613 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 14:28:53.617 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 156.0543ms.
+2025-04-04 14:28:53.710 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:53.712 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 302.757ms
+2025-04-04 14:28:53.732 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:53.738 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 401.0418ms
+2025-04-04 14:28:56.334 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 14:28:56.341 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:56.343 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:56.345 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 14:28:56.393 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:56.408 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 14:28:56.411 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 15.5787ms.
+2025-04-04 14:28:56.415 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:56.417 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 69.1233ms
+2025-04-04 14:28:56.420 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 14:28:56.423 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 88.6968ms
+2025-04-04 14:28:57.302 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 14:28:57.307 +05:30 [INF] CORS policy execution successful.
+2025-04-04 14:28:57.310 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:57.315 +05:30 [INF] Route matched with {action = "SearchUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String, System.String, System.String, Int32, Int32) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-04 14:28:57.356 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 14:28:57.360 +05:30 [INF] SearchUsers called with query: , sortBy: FirstName, sortOrder: asc, pageNumber: 1, pageSize: 5
+2025-04-04 14:28:57.379 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+2025-04-04 14:28:57.391 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [u].[FirstName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-04 14:28:57.405 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:57.418 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:57.426 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:57.432 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:57.437 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:57.442 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:57.447 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:57.453 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:57.458 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-04 14:28:57.463 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__roles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] IN (
+    SELECT [r0].[value]
+    FROM OPENJSON(@__roles_0) WITH ([value] uniqueidentifier '$') AS [r0]
+)
+2025-04-04 14:28:57.466 +05:30 [INF] SearchUsers completed successfully.
+2025-04-04 14:28:57.468 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 108.1273ms.
+2025-04-04 14:28:57.471 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 14:28:57.474 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi) in 154.1288ms
+2025-04-04 14:28:57.476 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.SearchUsers (StudentCoreWebApi)'
+2025-04-04 14:28:57.478 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 176.8485ms
+2025-04-04 15:25:30.451 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/Role/ - null null
+2025-04-04 15:25:30.483 +05:30 [INF] CORS policy execution successful.
+2025-04-04 15:25:30.493 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/Role/ - 204 null null 47.7304ms
+2025-04-04 15:25:30.505 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role/ - null null
+2025-04-04 15:25:30.523 +05:30 [INF] CORS policy execution successful.
+2025-04-04 15:25:30.580 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 09:40:10', Current time (UTC): '04-04-2025 09:55:30'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-04 15:25:30.608 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 09:40:10', Current time (UTC): '04-04-2025 09:55:30'.
+2025-04-04 15:25:30.614 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 15:25:30.631 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 15:25:30.667 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 15:25:30.673 +05:30 [INF] CORS policy execution successful.
+2025-04-04 15:25:30.675 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 204 null null 7.9519ms
+2025-04-04 15:25:30.693 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - null null
+2025-04-04 15:25:30.723 +05:30 [INF] CORS policy execution successful.
+2025-04-04 15:25:30.904 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 09:40:10', Current time (UTC): '04-04-2025 09:55:30'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-04 15:25:30.906 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 15:25:30.914 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04-04-2025 09:40:10', Current time (UTC): '04-04-2025 09:55:30'.
+2025-04-04 15:25:30.931 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Manager)
+2025-04-04 15:25:30.945 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-04-04 15:25:30.948 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=5 - 401 0 null 254.8927ms
+2025-04-04 15:25:31.108 +05:30 [INF] Executed DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 15:25:31.124 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 208.4803ms.
+2025-04-04 15:25:31.129 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 15:25:31.137 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 502.5528ms
+2025-04-04 15:25:31.141 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 15:25:31.144 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role/ - 200 null application/json; charset=utf-8 638.9933ms
+2025-04-04 17:05:36.285 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-04 17:05:36.872 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-04 17:05:36.874 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-04 17:05:36.980 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-04 17:05:36.982 +05:30 [INF] Hosting environment: Development
+2025-04-04 17:05:36.983 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-04 17:05:37.977 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-04 17:05:38.377 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 411.8993ms
+2025-04-04 17:05:38.393 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-04 17:05:38.393 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-04 17:05:38.405 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 12.3622ms
+2025-04-04 17:05:38.507 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 113.6036ms
+2025-04-04 17:05:38.637 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-04 17:05:38.658 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.2021ms
+2025-04-04 17:29:48.251 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/Role - null null
+2025-04-04 17:29:48.646 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 17:29:48.760 +05:30 [INF] Route matched with {action = "GetRoles", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoles() on controller StudentCoreWebApi.Controllers.RoleController (StudentCoreWebApi).
+2025-04-04 17:29:49.379 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-04 17:29:51.739 +05:30 [INF] Executed DbCommand (383ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+2025-04-04 17:29:51.847 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2462.698ms.
+2025-04-04 17:29:51.863 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.Collections.Generic.List`1[[StudentCoreWebApi.Model.Role, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-04 17:29:51.928 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi) in 3160.8228ms
+2025-04-04 17:29:51.931 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.RoleController.GetRoles (StudentCoreWebApi)'
+2025-04-04 17:29:51.942 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/Role - 200 null application/json; charset=utf-8 3700.9639ms
+2025-04-04 17:29:59.379 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=10 - null null
+2025-04-04 17:29:59.397 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Manager)
+2025-04-04 17:29:59.405 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-04-04 17:29:59.407 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/api/User/search?sortBy=FirstName&sortOrder=asc&pageNumber=1&pageSize=10 - 401 0 null 29.4821ms

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using StudentCoreWebApi.DTOs;
 using StudentCoreWebApi.Interface;
@@ -24,19 +25,26 @@ namespace UserCoreWebApi.Controllers
             _logger = logger;
         }
 
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize]
         [HttpGet("search")]
         public async Task<IActionResult> SearchUsers(
-            [FromQuery] string query = "",
-            [FromQuery] string sortBy = "FirstName",
-            [FromQuery] string sortOrder = "asc",
-            [FromQuery] int pageNumber = 1,
-            [FromQuery] int pageSize = 10)
+    [FromQuery] string query = "",
+    [FromQuery] string sortBy = "FirstName",
+    [FromQuery] string sortOrder = "asc",
+    [FromQuery] int pageNumber = 1,
+    [FromQuery] int pageSize = 10)
         {
             _logger.LogInformation("SearchUsers called with query: {Query}, sortBy: {SortBy}, sortOrder: {SortOrder}, pageNumber: {PageNumber}, pageSize: {PageSize}",
                                     query, sortBy, sortOrder, pageNumber, pageSize);
 
-            var response = await _UserRepository.GetAllUsersAsync(query, sortBy, sortOrder, pageNumber, pageSize);
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid userId))
+            {
+                _logger.LogWarning("Invalid or missing user ID in token.");
+                return Unauthorized("Invalid or missing user ID.");
+            }
+
+            var response = await _UserRepository.GetAllUsersAsync(query, sortBy, sortOrder, pageNumber, pageSize, userId);
 
             if (response == null || !response.Success)
             {
@@ -48,22 +56,21 @@ namespace UserCoreWebApi.Controllers
             return Ok(response);
         }
 
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody] AddUser addUser)
         {
-
             if (!ModelState.IsValid)
             {
                 _logger.LogWarning("AddUser failed due to invalid model state.");
                 return BadRequest(ModelState);
             }
 
-            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            var currentUserId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
             try
             {
-                var response = await _UserRepository.AddUserAsync(addUser, role);
+                var response = await _UserRepository.AddUserAsync(addUser, currentUserId);
 
                 if (!response.Success)
                 {
@@ -81,9 +88,9 @@ namespace UserCoreWebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize]
         [HttpPost("UpsertUser")]
-        public async Task<IActionResult> AddOrEditUser(Guid? id, [FromBody] UpsertDto userDto)
+        public async Task<IActionResult> AddOrEditUser([FromBody] UpsertDto userDto)
         {
             if (!ModelState.IsValid)
             {
@@ -92,7 +99,15 @@ namespace UserCoreWebApi.Controllers
             }
 
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
-            var response = await _UserRepository.AddOrEditUserAsync(id, userDto, role);
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;  
+            if (!Guid.TryParse(userId, out Guid userGuid))
+            {
+                _logger.LogError("AddOrEditUser: Invalid user ID format.");
+                return BadRequest("Invalid user ID format.");
+            }
+
+            var response = await _UserRepository.AddOrEditUserAsync(userDto, userGuid);
 
             if (!response.Success)
             {
@@ -104,8 +119,7 @@ namespace UserCoreWebApi.Controllers
             return Ok(response);
         }
 
-
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetUser([FromRoute] Guid id)
         {
@@ -123,22 +137,21 @@ namespace UserCoreWebApi.Controllers
             return Ok(response);
         }
 
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUser updateUser)
         {
-
             if (!ModelState.IsValid)
             {
                 _logger.LogWarning("UpdateUser failed due to invalid model state.");
                 return BadRequest(ModelState);
             }
 
-            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            var currentUserId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
             _logger.LogInformation("UpdateUser called for User ID: {UserId}", updateUser.Id);
 
-            var response = await _UserRepository.UpdateAsync(updateUser.Id, updateUser, role);
+            var response = await _UserRepository.UpdateAsync(updateUser.Id, updateUser, currentUserId);
 
             if (response == null || !response.Success)
             {
@@ -150,16 +163,21 @@ namespace UserCoreWebApi.Controllers
             return Ok(response);
         }
 
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize]
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteUser([FromRoute] Guid id)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !Guid.TryParse(currentUserIdString, out Guid currentUserId))
+            {
+                _logger.LogWarning("Unauthorized delete attempt for User ID: {UserId}", id);
+                return Unauthorized(new { Message = "Unauthorized action." });
+            }
 
-            _logger.LogInformation("DeleteUser called for User ID: {UserId}", id);
+            _logger.LogInformation("DeleteUser called for User ID: {UserId} by CurrentUser ID: {CurrentUserId}", id, currentUserId);
 
-            var response = await _UserRepository.DeleteAsync(id, role);
+            var response = await _UserRepository.DeleteAsync(id, currentUserId);
 
             if (response == null || !response.Success)
             {
@@ -167,8 +185,9 @@ namespace UserCoreWebApi.Controllers
                 return NotFound(response);
             }
 
-            _logger.LogInformation("DeleteUser successfully deleted User with ID: {UserId}", id);
+            _logger.LogInformation("DeleteUser successfully soft deleted User with ID: {UserId}", id);
             return Ok(response);
         }
+
     }
 }

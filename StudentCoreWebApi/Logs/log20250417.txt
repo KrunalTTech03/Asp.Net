@@ -1,0 +1,1297 @@
+2025-04-17 12:36:08.987 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-17 12:36:09.833 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-17 12:36:09.836 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-17 12:36:09.981 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-17 12:36:09.983 +05:30 [INF] Hosting environment: Development
+2025-04-17 12:36:09.985 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-17 12:36:12.264 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-17 12:36:12.870 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 619.1327ms
+2025-04-17 12:36:12.979 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-17 12:36:12.980 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-17 12:36:12.994 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 14.4804ms
+2025-04-17 12:36:13.058 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 78.5979ms
+2025-04-17 12:36:13.148 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-17 12:36:13.178 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 29.9859ms
+2025-04-17 12:37:04.774 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-17 12:37:04.795 +05:30 [INF] CORS policy execution successful.
+2025-04-17 12:37:04.985 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 12:37:05.051 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 12:37:05.789 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 12:37:07.573 +05:30 [INF] Executed DbCommand (217ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 12:37:08.670 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 12:37:08.708 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 12:37:08.732 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 12:37:08.783 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-17 12:37:08.790 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2994.5113ms.
+2025-04-17 12:37:08.807 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 12:37:08.840 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 3781.1755ms
+2025-04-17 12:37:08.843 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 12:37:08.856 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 4081.8688ms
+2025-04-17 12:38:28.759 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 22
+2025-04-17 12:38:28.771 +05:30 [INF] CORS policy execution successful.
+2025-04-17 12:38:28.868 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 12:38:28.881 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 12:38:28.890 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 4.975ms
+2025-04-17 12:38:28.893 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 12:38:29.025 +05:30 [ERR] An error occurred: Unable to resolve service for type 'StudentCoreWebApi.Interface.IPermissionRepository' while attempting to activate 'StudentCoreWebApi.Controllers.PermissionController'.
+System.InvalidOperationException: Unable to resolve service for type 'StudentCoreWebApi.Interface.IPermissionRepository' while attempting to activate 'StudentCoreWebApi.Controllers.PermissionController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method142(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StudentCoreWebApi.Middleware.ExceptionHandling.InvokeAsync(HttpContext context) in C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi\Middleware\ExceptionHandling.cs:line 23
+2025-04-17 12:38:29.294 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 500 null application/json 538.0354ms
+2025-04-17 12:38:53.001 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 70
+2025-04-17 12:38:53.022 +05:30 [INF] CORS policy execution successful.
+2025-04-17 12:38:53.031 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 12:38:53.032 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 12:38:53.036 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 0.9612ms
+2025-04-17 12:38:53.038 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 12:38:53.081 +05:30 [ERR] An error occurred: Unable to resolve service for type 'StudentCoreWebApi.Interface.IPermissionRepository' while attempting to activate 'StudentCoreWebApi.Controllers.PermissionController'.
+System.InvalidOperationException: Unable to resolve service for type 'StudentCoreWebApi.Interface.IPermissionRepository' while attempting to activate 'StudentCoreWebApi.Controllers.PermissionController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method142(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StudentCoreWebApi.Middleware.ExceptionHandling.InvokeAsync(HttpContext context) in C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi\Middleware\ExceptionHandling.cs:line 23
+2025-04-17 12:38:53.087 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 500 null application/json 86.4143ms
+2025-04-17 12:40:38.624 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-17 12:40:39.158 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-17 12:40:39.160 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-17 12:40:39.269 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-17 12:40:39.271 +05:30 [INF] Hosting environment: Development
+2025-04-17 12:40:39.274 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-17 12:40:40.496 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-17 12:40:40.919 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 435.067ms
+2025-04-17 12:40:41.023 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-17 12:40:41.023 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-17 12:40:41.049 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 26.9024ms
+2025-04-17 12:40:41.090 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 68.1593ms
+2025-04-17 12:40:41.175 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-17 12:40:41.206 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 31.1551ms
+2025-04-17 12:41:07.281 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 22
+2025-04-17 12:41:07.293 +05:30 [INF] CORS policy execution successful.
+2025-04-17 12:41:07.483 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 12:41:07.521 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 12:41:07.974 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 12:41:09.427 +05:30 [INF] Executed DbCommand (101ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 12:41:09.636 +05:30 [INF] Executed DbCommand (78ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 12:41:09.647 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 1666.818ms.
+2025-04-17 12:41:09.658 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 12:41:09.672 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 2144.0427ms
+2025-04-17 12:41:09.674 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 12:41:09.685 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 401 null application/json; charset=utf-8 2403.7017ms
+2025-04-17 12:41:35.255 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-17 12:41:35.270 +05:30 [INF] CORS policy execution successful.
+2025-04-17 12:41:35.273 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 12:41:35.281 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 12:41:35.431 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 12:41:35.518 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 12:41:35.928 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 12:41:35.951 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 12:41:35.972 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 12:41:35.989 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-17 12:41:35.991 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 558.1129ms.
+2025-04-17 12:41:35.994 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 12:41:36.004 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 720.1514ms
+2025-04-17 12:41:36.007 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 12:41:36.009 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 754.3673ms
+2025-04-17 12:41:49.374 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 22
+2025-04-17 12:41:49.379 +05:30 [INF] CORS policy execution successful.
+2025-04-17 12:41:49.386 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 12:41:49.388 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 12:41:49.418 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 12:41:49.484 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 12:41:49.496 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 12:41:49.499 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 79.2543ms.
+2025-04-17 12:41:49.501 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 12:41:49.503 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 112.6437ms
+2025-04-17 12:41:49.506 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 12:41:49.507 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 401 null application/json; charset=utf-8 133.736ms
+2025-04-17 14:25:25.927 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-17 14:25:26.411 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-17 14:25:26.415 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-17 14:25:26.527 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-17 14:25:26.529 +05:30 [INF] Hosting environment: Development
+2025-04-17 14:25:26.531 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-17 14:25:27.238 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-17 14:25:27.649 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 420.8053ms
+2025-04-17 14:25:27.718 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-17 14:25:27.722 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-17 14:25:27.746 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 28.2042ms
+2025-04-17 14:25:27.805 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 83.6949ms
+2025-04-17 14:25:27.850 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-17 14:25:27.878 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.3118ms
+2025-04-17 14:25:48.767 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-17 14:25:48.783 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:25:48.892 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 14:25:48.936 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 14:25:49.462 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 14:25:50.975 +05:30 [INF] Executed DbCommand (156ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 14:25:51.419 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 14:25:51.444 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 14:25:51.464 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 14:25:51.503 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-17 14:25:51.508 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2040.3531ms.
+2025-04-17 14:25:51.519 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 14:25:51.545 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 2600.3309ms
+2025-04-17 14:25:51.548 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 14:25:51.558 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 2790.8515ms
+2025-04-17 14:26:17.877 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 22
+2025-04-17 14:26:17.883 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:26:17.956 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:26:17.966 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 14:26:18.037 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 14:26:18.091 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 14:26:18.280 +05:30 [INF] Executed DbCommand (79ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 14:26:18.286 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 247.2252ms.
+2025-04-17 14:26:18.289 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 14:26:18.294 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 325.3389ms
+2025-04-17 14:26:18.297 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:26:18.298 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 401 null application/json; charset=utf-8 421.6907ms
+2025-04-17 14:26:42.311 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-17 14:26:43.107 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-17 14:26:43.110 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-17 14:26:43.410 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-17 14:26:43.412 +05:30 [INF] Hosting environment: Development
+2025-04-17 14:26:43.414 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-17 14:26:44.539 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-17 14:26:44.919 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 390.5864ms
+2025-04-17 14:26:45.026 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-17 14:26:45.026 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-17 14:26:45.090 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 65.5678ms
+2025-04-17 14:26:45.133 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 108.1008ms
+2025-04-17 14:26:45.189 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-17 14:26:45.223 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.408ms
+2025-04-17 14:34:00.299 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-17 14:34:00.445 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:34:00.943 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 14:34:01.046 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 14:34:02.246 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 14:34:04.752 +05:30 [INF] Executed DbCommand (216ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 14:34:05.226 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 14:34:05.254 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 14:34:05.283 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 14:34:05.311 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-17 14:34:05.318 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3064.5844ms.
+2025-04-17 14:34:05.330 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 14:34:05.370 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 4317.3695ms
+2025-04-17 14:34:05.375 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 14:34:05.387 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 5097.8437ms
+2025-04-17 14:34:26.691 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 22
+2025-04-17 14:34:26.715 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:34:26.726 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:34:26.731 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 14:34:26.770 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 14:35:42.625 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 14:35:42.901 +05:30 [INF] Executed DbCommand (89ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 14:35:50.573 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 83801.5043ms.
+2025-04-17 14:35:50.578 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 14:35:50.591 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 83855.8216ms
+2025-04-17 14:35:50.592 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:35:50.595 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 401 null application/json; charset=utf-8 83904.045ms
+2025-04-17 14:40:14.679 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission/assign - application/json 55
+2025-04-17 14:40:14.705 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:40:14.731 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionToRole (StudentCoreWebApi)'
+2025-04-17 14:40:14.769 +05:30 [INF] Route matched with {action = "AssignPermissionToRole", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AssignPermissionToRole(StudentCoreWebApi.DTOs.AssignPermissionDto) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 14:40:14.847 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-04-17 14:40:14.903 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.AssignPermissionToRole (StudentCoreWebApi) in 129.8921ms
+2025-04-17 14:40:14.906 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionToRole (StudentCoreWebApi)'
+2025-04-17 14:40:14.908 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission/assign - 400 null application/problem+json; charset=utf-8 232.0562ms
+2025-04-17 14:40:20.902 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission/assign - application/json 112
+2025-04-17 14:40:20.906 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:40:20.915 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionToRole (StudentCoreWebApi)'
+2025-04-17 14:40:20.918 +05:30 [INF] Route matched with {action = "AssignPermissionToRole", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AssignPermissionToRole(StudentCoreWebApi.DTOs.AssignPermissionDto) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 14:40:21.026 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.AssignPermissionToRole (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 14:40:21.133 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 14:40:21.150 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 14:40:21.154 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.AssignPermissionToRole (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 125.819ms.
+2025-04-17 14:40:21.157 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-17 14:40:21.161 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.AssignPermissionToRole (StudentCoreWebApi) in 239.4264ms
+2025-04-17 14:40:21.163 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionToRole (StudentCoreWebApi)'
+2025-04-17 14:40:21.165 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission/assign - 401 null application/json; charset=utf-8 263.0661ms
+2025-04-17 14:43:52.528 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 33
+2025-04-17 14:43:52.535 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:43:52.539 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:43:52.542 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 14:43:52.630 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 14:44:02.037 +05:30 [INF] Executed DbCommand (78ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 14:44:02.103 +05:30 [INF] Executed DbCommand (58ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 14:44:11.260 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 18627.126ms.
+2025-04-17 14:44:11.263 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 14:44:21.862 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 29317.5948ms
+2025-04-17 14:44:21.867 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:44:22.741 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 401 null application/json; charset=utf-8 30215.1239ms
+2025-04-17 14:44:33.160 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 33
+2025-04-17 14:44:33.163 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:44:33.165 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:44:33.166 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 14:44:33.221 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 14:44:36.136 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 14:44:36.153 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 14:45:30.934 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 57711.1906ms.
+2025-04-17 14:45:30.953 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 14:45:36.919 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 63749.5508ms
+2025-04-17 14:45:36.938 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:45:45.900 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 401 null application/json; charset=utf-8 72740.4541ms
+2025-04-17 14:45:55.539 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 22
+2025-04-17 14:45:55.544 +05:30 [INF] CORS policy execution successful.
+2025-04-17 14:45:55.546 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:45:55.549 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 14:45:55.610 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 14:45:58.777 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 14:45:59.204 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 14:46:12.590 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 16976.856ms.
+2025-04-17 14:46:12.594 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 14:46:14.319 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 18766.5611ms
+2025-04-17 14:46:14.322 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 14:46:16.381 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 401 null application/json; charset=utf-8 20840.8996ms
+2025-04-17 15:00:22.334 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-17 15:00:23.297 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-17 15:00:23.300 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-17 15:00:23.507 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-17 15:00:23.511 +05:30 [INF] Hosting environment: Development
+2025-04-17 15:00:23.513 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-17 15:00:24.282 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-17 15:00:24.732 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 463.1977ms
+2025-04-17 15:00:24.822 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-17 15:00:24.825 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-17 15:00:24.840 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 16.9999ms
+2025-04-17 15:00:24.915 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 89.9492ms
+2025-04-17 15:00:24.997 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-17 15:00:25.019 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.4395ms
+2025-04-17 15:00:47.569 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-17 15:00:47.587 +05:30 [INF] CORS policy execution successful.
+2025-04-17 15:00:47.751 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 15:00:47.805 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 15:00:48.622 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 15:00:50.871 +05:30 [INF] Executed DbCommand (203ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 15:00:51.711 +05:30 [INF] Executed DbCommand (143ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 15:00:51.756 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 15:00:51.794 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 15:00:51.853 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-17 15:00:51.861 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3231.2785ms.
+2025-04-17 15:00:51.875 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 15:00:51.911 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 4095.9905ms
+2025-04-17 15:00:51.915 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 15:00:51.932 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 4363.8004ms
+2025-04-17 15:01:19.010 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 22
+2025-04-17 15:01:19.019 +05:30 [INF] CORS policy execution successful.
+2025-04-17 15:01:19.126 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:01:19.140 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 15:01:19.195 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 15:01:34.368 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 15:01:34.921 +05:30 [INF] Executed DbCommand (297ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 15:01:43.681 +05:30 [INF] Executed DbCommand (67ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Permissions] ([Id], [Name])
+VALUES (@p0, @p1);
+2025-04-17 15:01:48.480 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 29280.6304ms.
+2025-04-17 15:01:48.484 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 15:01:56.793 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 37647.0609ms
+2025-04-17 15:01:56.796 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:02:01.277 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 200 null application/json; charset=utf-8 42267.4103ms
+2025-04-17 15:16:06.561 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 20
+2025-04-17 15:16:06.657 +05:30 [INF] CORS policy execution successful.
+2025-04-17 15:16:06.777 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:16:06.807 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 15:16:07.158 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 15:16:07.672 +05:30 [INF] Executed DbCommand (35ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 15:16:07.779 +05:30 [INF] Executed DbCommand (88ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 15:16:07.826 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Permissions] ([Id], [Name])
+VALUES (@p0, @p1);
+2025-04-17 15:16:07.834 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 663.71ms.
+2025-04-17 15:16:07.840 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 15:16:07.846 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 1034.0289ms
+2025-04-17 15:16:07.850 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:16:07.853 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 200 null application/json; charset=utf-8 1304.5456ms
+2025-04-17 15:17:16.092 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 20
+2025-04-17 15:17:16.115 +05:30 [INF] CORS policy execution successful.
+2025-04-17 15:17:16.126 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:17:16.128 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 15:17:16.244 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 15:17:16.257 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 15:17:16.284 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 15:17:16.303 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Permissions] ([Id], [Name])
+VALUES (@p0, @p1);
+2025-04-17 15:17:16.309 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 61.9216ms.
+2025-04-17 15:17:16.313 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 15:17:16.318 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 186.6607ms
+2025-04-17 15:17:16.322 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:17:16.325 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 200 null application/json; charset=utf-8 233.6778ms
+2025-04-17 15:17:26.558 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 22
+2025-04-17 15:17:26.566 +05:30 [INF] CORS policy execution successful.
+2025-04-17 15:17:26.571 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:17:26.574 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 15:17:26.650 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 15:17:26.663 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 15:17:26.684 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 15:17:26.696 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Permissions] ([Id], [Name])
+VALUES (@p0, @p1);
+2025-04-17 15:17:26.705 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 51.1092ms.
+2025-04-17 15:17:26.710 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 15:17:26.714 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 134.3402ms
+2025-04-17 15:17:26.718 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:17:26.721 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 200 null application/json; charset=utf-8 164.3737ms
+2025-04-17 15:19:53.451 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 61
+2025-04-17 15:19:53.481 +05:30 [INF] CORS policy execution successful.
+2025-04-17 15:19:53.485 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 15:19:53.488 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 15:19:53.597 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 15:19:53.641 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 15:19:54.074 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 15:19:54.089 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 15:19:54.100 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 15:19:54.112 +05:30 [INF] User logged in successfully: AnshPatel@gmail.com
+2025-04-17 15:19:54.115 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 514.3594ms.
+2025-04-17 15:19:54.120 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 15:19:54.125 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 632.1205ms
+2025-04-17 15:19:54.128 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 15:19:54.131 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 680.6578ms
+2025-04-17 15:20:24.406 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission - application/json 18
+2025-04-17 15:20:24.431 +05:30 [INF] CORS policy execution successful.
+2025-04-17 15:20:24.433 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:20:24.437 +05:30 [INF] Route matched with {action = "CreatePermission", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePermission(StudentCoreWebApi.Model.Permission) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 15:20:24.481 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 15:20:24.495 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 15:20:24.539 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 15:20:24.549 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 63.7248ms.
+2025-04-17 15:20:24.552 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.Model.Permission, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 15:20:24.556 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi) in 114.3951ms
+2025-04-17 15:20:24.560 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.CreatePermission (StudentCoreWebApi)'
+2025-04-17 15:20:24.564 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission - 401 null application/json; charset=utf-8 157.9573ms
+2025-04-17 16:14:30.121 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-17 16:14:30.855 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-17 16:14:30.859 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-17 16:14:31.103 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-17 16:14:31.106 +05:30 [INF] Hosting environment: Development
+2025-04-17 16:14:31.108 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-17 16:14:33.377 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-17 16:14:33.817 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 449.9155ms
+2025-04-17 16:14:33.892 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-17 16:14:33.892 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-17 16:14:33.907 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 15.0891ms
+2025-04-17 16:14:34.000 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 108.1508ms
+2025-04-17 16:14:34.044 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-17 16:14:34.072 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.5298ms
+2025-04-17 16:15:14.805 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 65
+2025-04-17 16:15:14.816 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:15:14.949 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:15:14.988 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 16:15:15.519 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:15:17.079 +05:30 [INF] Executed DbCommand (115ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 16:15:17.531 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 16:15:17.568 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 16:15:17.592 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 16:15:17.638 +05:30 [INF] User logged in successfully: Admin@gmail.com
+2025-04-17 16:15:17.645 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2119.0461ms.
+2025-04-17 16:15:17.655 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:15:17.678 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 2682.3301ms
+2025-04-17 16:15:17.680 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:15:17.689 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 2884.9073ms
+2025-04-17 16:16:03.736 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 61
+2025-04-17 16:16:03.743 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:16:03.788 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:16:03.791 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 16:16:03.829 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:16:03.864 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 16:16:04.171 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 16:16:04.180 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 16:16:04.187 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 16:16:04.190 +05:30 [INF] User logged in successfully: AnshPatel@gmail.com
+2025-04-17 16:16:04.191 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 359.7734ms.
+2025-04-17 16:16:04.194 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:16:04.197 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 404.3374ms
+2025-04-17 16:16:04.199 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:16:04.202 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 465.9571ms
+2025-04-17 16:16:23.821 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission/assign - application/json 123
+2025-04-17 16:16:23.827 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:16:23.839 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi)'
+2025-04-17 16:16:23.848 +05:30 [INF] Route matched with {action = "AssignPermissionsToRole", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AssignPermissionsToRole(StudentCoreWebApi.DTOs.AssignPermissionDto) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 16:16:23.891 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:16:23.986 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 16:16:24.137 +05:30 [INF] Executed DbCommand (54ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 16:16:24.144 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 250.846ms.
+2025-04-17 16:16:24.147 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-17 16:16:24.151 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi) in 301.6898ms
+2025-04-17 16:16:24.153 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi)'
+2025-04-17 16:16:24.155 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission/assign - 401 null application/json; charset=utf-8 334.3543ms
+2025-04-17 16:17:01.050 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 171
+2025-04-17 16:17:01.064 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:17:01.067 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:17:01.072 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:17:01.108 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-04-17 16:17:01.133 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 57.8968ms
+2025-04-17 16:17:01.136 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:17:01.137 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/problem+json; charset=utf-8 87.8299ms
+2025-04-17 16:17:48.218 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 172
+2025-04-17 16:17:48.232 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:17:48.235 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:17:48.237 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:17:48.241 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-04-17 16:17:48.243 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 3.3797ms
+2025-04-17 16:17:48.245 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:17:48.247 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/problem+json; charset=utf-8 29.3251ms
+2025-04-17 16:17:57.610 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 182
+2025-04-17 16:17:57.626 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:17:57.628 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:17:57.630 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:17:57.656 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:17:57.670 +05:30 [ERR] AddUser failed: Access Denied. Resctricted by Admin
+2025-04-17 16:17:57.672 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 13.1601ms.
+2025-04-17 16:17:57.674 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:17:57.679 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 46.276ms
+2025-04-17 16:17:57.681 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:17:57.683 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 74.742ms
+2025-04-17 16:22:45.427 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission/assign - application/json 123
+2025-04-17 16:22:45.443 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:22:45.445 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi)'
+2025-04-17 16:22:45.446 +05:30 [INF] Route matched with {action = "AssignPermissionsToRole", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AssignPermissionsToRole(StudentCoreWebApi.DTOs.AssignPermissionDto) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 16:22:45.472 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:22:45.523 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 16:22:45.541 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 16:22:45.545 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 71.3745ms.
+2025-04-17 16:22:45.547 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-17 16:22:45.549 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi) in 100.7357ms
+2025-04-17 16:22:45.551 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi)'
+2025-04-17 16:22:45.554 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission/assign - 401 null application/json; charset=utf-8 126.1573ms
+2025-04-17 16:23:02.798 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/Permission/assign - application/json 123
+2025-04-17 16:23:02.807 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:23:02.810 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi)'
+2025-04-17 16:23:02.812 +05:30 [INF] Route matched with {action = "AssignPermissionsToRole", controller = "Permission"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AssignPermissionsToRole(StudentCoreWebApi.DTOs.AssignPermissionDto) on controller StudentCoreWebApi.Controllers.PermissionController (StudentCoreWebApi).
+2025-04-17 16:23:02.841 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:23:02.849 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 16:23:02.859 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__roleIds_0='?' (Size = 4000), @__permissionName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [r0].[value]
+            FROM OPENJSON(@__roleIds_0) WITH ([value] uniqueidentifier '$') AS [r0]
+        ) AND EXISTS (
+            SELECT 1
+            FROM [Permissions] AS [p]
+            WHERE [p].[Id] = [r].[PermissionId] AND [p].[Name] = @__permissionName_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 16:23:03.042 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RolePermissions] ([Id], [PermissionId], [RoleId])
+VALUES (@p0, @p1, @p2);
+2025-04-17 16:23:03.055 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 211.5017ms.
+2025-04-17 16:23:03.057 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-17 16:23:03.059 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi) in 244.6305ms
+2025-04-17 16:23:03.061 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.PermissionController.AssignPermissionsToRole (StudentCoreWebApi)'
+2025-04-17 16:23:03.062 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/Permission/assign - 200 null application/json; charset=utf-8 264.6268ms
+2025-04-17 16:23:53.886 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 182
+2025-04-17 16:23:53.895 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:23:53.896 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:23:53.898 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:23:53.921 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:23:53.924 +05:30 [ERR] AddUser failed: Access Denied. Resctricted by Admin
+2025-04-17 16:23:53.926 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 2.3135ms.
+2025-04-17 16:23:53.927 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:23:53.929 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 28.8954ms
+2025-04-17 16:23:53.931 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:23:53.932 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 47.1482ms
+2025-04-17 16:23:56.815 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 182
+2025-04-17 16:23:56.819 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:23:56.823 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:23:56.824 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:23:56.847 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:23:56.849 +05:30 [ERR] AddUser failed: Access Denied. Resctricted by Admin
+2025-04-17 16:23:56.851 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 1.4654ms.
+2025-04-17 16:23:56.853 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:23:56.855 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 28.1298ms
+2025-04-17 16:23:56.857 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:23:56.858 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 43.0162ms
+2025-04-17 16:34:46.448 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 182
+2025-04-17 16:34:46.469 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:34:46.486 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:34:46.496 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:34:46.615 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:34:46.618 +05:30 [ERR] AddUser failed: Access Denied. Resctricted by Admin
+2025-04-17 16:34:46.621 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 2.9002ms.
+2025-04-17 16:34:46.624 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:34:46.627 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 128.6267ms
+2025-04-17 16:34:46.629 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:34:46.630 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 185.8875ms
+2025-04-17 16:44:33.955 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 182
+2025-04-17 16:44:33.971 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:44:33.988 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:44:33.994 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:44:34.112 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:44:34.115 +05:30 [ERR] AddUser failed: Access Denied. Resctricted by Admin
+2025-04-17 16:44:34.117 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 2.8186ms.
+2025-04-17 16:44:34.119 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:44:34.122 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 125.0664ms
+2025-04-17 16:44:34.125 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:44:34.127 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 174.2067ms
+2025-04-17 16:49:25.999 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-17 16:49:26.751 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-17 16:49:26.754 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-17 16:49:26.901 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-17 16:49:26.903 +05:30 [INF] Hosting environment: Development
+2025-04-17 16:49:26.905 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-17 16:49:28.114 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-17 16:49:28.642 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 549.8776ms
+2025-04-17 16:49:28.745 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-17 16:49:28.748 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-17 16:49:28.760 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 15.3892ms
+2025-04-17 16:49:28.813 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.946ms
+2025-04-17 16:49:28.904 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-17 16:49:28.928 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.3253ms
+2025-04-17 16:49:49.628 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 63
+2025-04-17 16:49:49.642 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:49:49.756 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:49:49.792 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 16:49:50.328 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:49:51.805 +05:30 [INF] Executed DbCommand (190ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 16:49:51.836 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 1501.9325ms.
+2025-04-17 16:49:51.848 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:49:51.868 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 2067.8737ms
+2025-04-17 16:49:51.871 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:49:51.880 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 401 null application/json; charset=utf-8 2251.6232ms
+2025-04-17 16:50:02.311 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 56
+2025-04-17 16:50:02.325 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:50:02.328 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:50:02.330 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 16:50:02.353 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:50:02.390 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 16:50:02.394 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 37.6668ms.
+2025-04-17 16:50:02.396 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:50:02.398 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 66.087ms
+2025-04-17 16:50:02.401 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:50:02.403 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 401 null application/json; charset=utf-8 92.8165ms
+2025-04-17 16:50:08.419 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 61
+2025-04-17 16:50:08.423 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:50:08.426 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:50:08.428 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 16:50:08.451 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:50:08.515 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 16:50:08.924 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 16:50:08.955 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 16:50:08.988 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 16:50:09.031 +05:30 [INF] User logged in successfully: AnshPatel@gmail.com
+2025-04-17 16:50:09.033 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 579.5193ms.
+2025-04-17 16:50:09.036 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:50:09.043 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 612.4931ms
+2025-04-17 16:50:09.045 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 16:50:09.048 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 629.0973ms
+2025-04-17 16:50:57.884 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 184
+2025-04-17 16:50:57.902 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:50:57.974 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:50:57.982 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:50:58.030 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:52:27.652 +05:30 [ERR] AddUser failed: Access Denied. Resctricted by Admin
+2025-04-17 16:52:27.668 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 89636.134ms.
+2025-04-17 16:52:27.673 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:52:27.681 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 89696.5967ms
+2025-04-17 16:52:27.691 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:52:27.692 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 89809.4202ms
+2025-04-17 16:53:36.009 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 184
+2025-04-17 16:53:36.020 +05:30 [INF] CORS policy execution successful.
+2025-04-17 16:53:36.023 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:53:36.025 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 16:53:36.047 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 16:57:28.676 +05:30 [ERR] AddUser failed: Access Denied. Resctricted by Admin
+2025-04-17 16:57:28.726 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 232676.2445ms.
+2025-04-17 16:57:28.739 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 16:57:28.741 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 232713.7278ms
+2025-04-17 16:57:28.752 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 16:57:28.754 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 232745.0505ms
+2025-04-17 18:32:56.692 +05:30 [INF] User profile is available. Using 'C:\Users\91948\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-17 18:32:57.295 +05:30 [INF] Now listening on: https://localhost:7211
+2025-04-17 18:32:57.298 +05:30 [INF] Now listening on: http://localhost:5181
+2025-04-17 18:32:57.407 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-17 18:32:57.409 +05:30 [INF] Hosting environment: Development
+2025-04-17 18:32:57.410 +05:30 [INF] Content root path: C:\Users\91948\source\repos\StudentCoreWebApi\StudentCoreWebApi
+2025-04-17 18:32:58.962 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-04-17 18:32:59.360 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 408.9937ms
+2025-04-17 18:32:59.425 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-17 18:32:59.425 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-04-17 18:32:59.440 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13770 application/javascript; charset=utf-8 15.7641ms
+2025-04-17 18:32:59.499 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 74.3376ms
+2025-04-17 18:32:59.562 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-04-17 18:32:59.588 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.1792ms
+2025-04-17 18:43:10.018 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 61
+2025-04-17 18:43:10.128 +05:30 [INF] CORS policy execution successful.
+2025-04-17 18:43:10.347 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 18:43:10.461 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 18:43:11.380 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 18:43:13.552 +05:30 [INF] Executed DbCommand (175ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 18:43:14.314 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 18:43:14.341 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 18:43:14.382 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 18:43:14.439 +05:30 [INF] User logged in successfully: AnshPatel@gmail.com
+2025-04-17 18:43:14.447 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3059.2122ms.
+2025-04-17 18:43:14.462 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 18:43:14.505 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 4036.3154ms
+2025-04-17 18:43:14.507 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 18:43:14.516 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 4502.3669ms
+2025-04-17 18:44:08.637 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 181
+2025-04-17 18:44:08.651 +05:30 [INF] CORS policy execution successful.
+2025-04-17 18:44:08.729 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:44:08.737 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 18:44:08.813 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 18:44:08.866 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 18:44:08.886 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__permissionName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Name]
+FROM [Permissions] AS [p]
+WHERE [p].[Name] = @__permissionName_0
+2025-04-17 18:44:09.028 +05:30 [INF] Executed DbCommand (53ms) [Parameters=[@__userRoleIds_0='?' (Size = 4000), @__permission_Id_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [u].[value]
+            FROM OPENJSON(@__userRoleIds_0) WITH ([value] uniqueidentifier '$') AS [u]
+        ) AND [r].[PermissionId] = @__permission_Id_1) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 18:44:09.045 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userDto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__userDto_Email_0
+2025-04-17 18:44:09.061 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userDto_Phone_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Phone] = @__userDto_Phone_0
+2025-04-17 18:44:09.514 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Email], [FirstName], [IsDeleted], [LastName], [PasswordHash], [PasswordSalt], [Phone])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-04-17 18:44:09.534 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__roleId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__roleId_0
+2025-04-17 18:44:09.548 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UsersRoles] ([Id], [Role_Id], [User_Id])
+VALUES (@p0, @p1, @p2);
+2025-04-17 18:44:09.552 +05:30 [INF] User added successfully with ID: "f8b506f9-f4be-485b-de0d-08dd7db1bd3b"
+2025-04-17 18:44:09.557 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 741.5341ms.
+2025-04-17 18:44:09.560 +05:30 [INF] Executing CreatedAtActionResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 18:44:09.597 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 857.1098ms
+2025-04-17 18:44:09.600 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:44:09.602 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 201 null application/json; charset=utf-8 965.4061ms
+2025-04-17 18:44:42.855 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 60
+2025-04-17 18:44:42.869 +05:30 [INF] CORS policy execution successful.
+2025-04-17 18:44:42.873 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 18:44:42.874 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 18:44:42.903 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 18:44:42.964 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 18:44:42.969 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 63.1831ms.
+2025-04-17 18:44:42.971 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 18:44:42.974 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 97.2673ms
+2025-04-17 18:44:42.976 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 18:44:42.977 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 401 null application/json; charset=utf-8 122.8998ms
+2025-04-17 18:47:09.014 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/auth/login - application/json 54
+2025-04-17 18:47:09.026 +05:30 [INF] CORS policy execution successful.
+2025-04-17 18:47:09.028 +05:30 [INF] Executing endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 18:47:09.029 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StudentCoreWebApi.DTOs.LoginRequest) on controller StudentCoreWebApi.Controllers.AuthController (StudentCoreWebApi).
+2025-04-17 18:47:09.054 +05:30 [INF] Executing action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 18:47:09.062 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__request_Email_0
+2025-04-17 18:47:09.199 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Role_Id], [u].[User_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__user_Id_0
+2025-04-17 18:47:09.205 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__userRole_Role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__userRole_Role_Id_0
+2025-04-17 18:47:09.211 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_name] = N'Admin'
+2025-04-17 18:47:09.215 +05:30 [INF] User logged in successfully: abc@gmail.com
+2025-04-17 18:47:09.217 +05:30 [INF] Executed action method StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 160.6838ms.
+2025-04-17 18:47:09.220 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.LoginResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 18:47:09.222 +05:30 [INF] Executed action StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi) in 189.7909ms
+2025-04-17 18:47:09.223 +05:30 [INF] Executed endpoint 'StudentCoreWebApi.Controllers.AuthController.Login (StudentCoreWebApi)'
+2025-04-17 18:47:09.225 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/auth/login - 200 null application/json; charset=utf-8 211.4487ms
+2025-04-17 18:48:50.353 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 181
+2025-04-17 18:48:50.366 +05:30 [INF] CORS policy execution successful.
+2025-04-17 18:48:50.369 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:48:50.371 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 18:48:50.404 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 18:48:50.412 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 18:48:50.419 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__permissionName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Name]
+FROM [Permissions] AS [p]
+WHERE [p].[Name] = @__permissionName_0
+2025-04-17 18:48:50.426 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userRoleIds_0='?' (Size = 4000), @__permission_Id_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [u].[value]
+            FROM OPENJSON(@__userRoleIds_0) WITH ([value] uniqueidentifier '$') AS [u]
+        ) AND [r].[PermissionId] = @__permission_Id_1) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 18:48:50.433 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userDto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__userDto_Email_0
+2025-04-17 18:48:50.440 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userDto_Phone_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Phone] = @__userDto_Phone_0
+2025-04-17 18:48:50.444 +05:30 [ERR] AddUser failed: User With Phone Number Already Exists!
+2025-04-17 18:48:50.448 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 41.5813ms.
+2025-04-17 18:48:50.451 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 18:48:50.453 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 80.0159ms
+2025-04-17 18:48:50.455 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:48:50.457 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 104.5591ms
+2025-04-17 18:48:58.641 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 181
+2025-04-17 18:48:58.645 +05:30 [INF] CORS policy execution successful.
+2025-04-17 18:48:58.648 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:48:58.650 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 18:48:58.682 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 18:48:58.687 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 18:48:58.692 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__permissionName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Name]
+FROM [Permissions] AS [p]
+WHERE [p].[Name] = @__permissionName_0
+2025-04-17 18:48:58.701 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userRoleIds_0='?' (Size = 4000), @__permission_Id_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [u].[value]
+            FROM OPENJSON(@__userRoleIds_0) WITH ([value] uniqueidentifier '$') AS [u]
+        ) AND [r].[PermissionId] = @__permission_Id_1) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 18:48:58.708 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userDto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__userDto_Email_0
+2025-04-17 18:48:58.712 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userDto_Phone_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Phone] = @__userDto_Phone_0
+2025-04-17 18:48:58.849 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Email], [FirstName], [IsDeleted], [LastName], [PasswordHash], [PasswordSalt], [Phone])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-04-17 18:48:58.855 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roleId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__roleId_0
+2025-04-17 18:48:58.862 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UsersRoles] ([Id], [Role_Id], [User_Id])
+VALUES (@p0, @p1, @p2);
+2025-04-17 18:48:58.865 +05:30 [INF] User added successfully with ID: "0f5cd980-60ec-4ac5-de0e-08dd7db1bd3b"
+2025-04-17 18:48:58.866 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 182.7023ms.
+2025-04-17 18:48:58.868 +05:30 [INF] Executing CreatedAtActionResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 18:48:58.871 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 218.6031ms
+2025-04-17 18:48:58.873 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:48:58.874 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 201 null application/json; charset=utf-8 234.6257ms
+2025-04-17 18:49:19.571 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 181
+2025-04-17 18:49:19.581 +05:30 [INF] CORS policy execution successful.
+2025-04-17 18:49:19.583 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:49:19.586 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 18:49:19.614 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 18:49:19.622 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 18:49:19.628 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__permissionName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Name]
+FROM [Permissions] AS [p]
+WHERE [p].[Name] = @__permissionName_0
+2025-04-17 18:49:19.636 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userRoleIds_0='?' (Size = 4000), @__permission_Id_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [u].[value]
+            FROM OPENJSON(@__userRoleIds_0) WITH ([value] uniqueidentifier '$') AS [u]
+        ) AND [r].[PermissionId] = @__permission_Id_1) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 18:49:19.643 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userDto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__userDto_Email_0
+2025-04-17 18:49:19.647 +05:30 [ERR] AddUser failed: User Already Exist
+2025-04-17 18:49:19.648 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 31.2264ms.
+2025-04-17 18:49:19.651 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 18:49:19.654 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 65.1968ms
+2025-04-17 18:49:19.656 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:49:19.657 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 400 null application/json; charset=utf-8 86.8071ms
+2025-04-17 18:49:25.914 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7211/api/User - application/json 182
+2025-04-17 18:49:25.918 +05:30 [INF] CORS policy execution successful.
+2025-04-17 18:49:25.920 +05:30 [INF] Executing endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:49:25.922 +05:30 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(StudentCoreWebApi.DTOs.AddUser) on controller UserCoreWebApi.Controllers.UserController (StudentCoreWebApi).
+2025-04-17 18:49:25.939 +05:30 [INF] Executing action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) - Validation state: "Valid"
+2025-04-17 18:49:25.947 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Role_Id]
+FROM [UsersRoles] AS [u]
+WHERE [u].[User_Id] = @__userId_0
+2025-04-17 18:49:25.952 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__permissionName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Name]
+FROM [Permissions] AS [p]
+WHERE [p].[Name] = @__permissionName_0
+2025-04-17 18:49:25.959 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userRoleIds_0='?' (Size = 4000), @__permission_Id_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RolePermissions] AS [r]
+        WHERE [r].[RoleId] IN (
+            SELECT [u].[value]
+            FROM OPENJSON(@__userRoleIds_0) WITH ([value] uniqueidentifier '$') AS [u]
+        ) AND [r].[PermissionId] = @__permission_Id_1) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-17 18:49:25.966 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__userDto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[IsDeleted] = CAST(0 AS bit) AND [u].[Email] = @__userDto_Email_0
+2025-04-17 18:49:25.971 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__userDto_Phone_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[IsDeleted], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Phone]
+FROM [Users] AS [u]
+WHERE [u].[Phone] = @__userDto_Phone_0
+2025-04-17 18:49:26.106 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Email], [FirstName], [IsDeleted], [LastName], [PasswordHash], [PasswordSalt], [Phone])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-04-17 18:49:26.112 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__roleId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[role_Id], [r].[role_name]
+FROM [Roles] AS [r]
+WHERE [r].[role_Id] = @__roleId_0
+2025-04-17 18:49:26.117 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UsersRoles] ([Id], [Role_Id], [User_Id])
+VALUES (@p0, @p1, @p2);
+2025-04-17 18:49:26.121 +05:30 [INF] User added successfully with ID: "6809df2c-1e01-429b-de0f-08dd7db1bd3b"
+2025-04-17 18:49:26.122 +05:30 [INF] Executed action method UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 181.0371ms.
+2025-04-17 18:49:26.124 +05:30 [INF] Executing CreatedAtActionResult, writing value of type 'StudentCoreWebApi.Response.ApiResponse`1[[StudentCoreWebApi.DTOs.AddUserResponseDto, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-17 18:49:26.127 +05:30 [INF] Executed action UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi) in 202.5171ms
+2025-04-17 18:49:26.129 +05:30 [INF] Executed endpoint 'UserCoreWebApi.Controllers.UserController.AddUser (StudentCoreWebApi)'
+2025-04-17 18:49:26.130 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7211/api/User - 201 null application/json; charset=utf-8 216.3582ms

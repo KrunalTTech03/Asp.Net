@@ -10,6 +10,7 @@ using StudentCoreWebApi.Interface;
 using StudentCoreWebApi.Mapper;
 using StudentCoreWebApi.Middleware;
 using StudentCoreWebApi.Model;
+using StudentCoreWebApi.Repository;
 using StudentCoreWebApi.Services;
 using StudentCoreWebApi.Validators;
 using System.Security.Claims;
@@ -65,6 +66,9 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<JwtTokenService>();
 builder.Services.AddScoped<PasswordService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
+builder.Services.AddScoped<IMenuRepository, MenuRepository>();
 
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -114,6 +118,18 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddScoped<EmailServices>();
+
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowSpecificOrigin", policy =>
+//    {
+//        policy.WithOrigins("http://localhost:5173/")
+//              .AllowAnyHeader()
+//              .AllowAnyMethod();
+//    });
+//});
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -129,11 +145,13 @@ var app = builder.Build();
 // Middleware Pipeline
 
 // Using Swagger only in Development
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Global Exception Handling Middleware
 app.UseMiddleware<ExceptionHandling>();
