@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentCoreWebApi.Data;
 using StudentCoreWebApi.DTOs;
 using StudentCoreWebApi.Enums;
+using StudentCoreWebApi.Helpers;
 using StudentCoreWebApi.Interface;
 using StudentCoreWebApi.Model;
 using StudentCoreWebApi.Response;
@@ -27,9 +28,59 @@ public class UserRepository : IUserRepository
         _emailServices = emailServices; 
     }
 
+    public async Task<ApiResponse<object>> GetAllUserstempAsync(Guid userId)
+    {
+        try
+        {
+            var userRoleIds = await _dbContext.UsersRoles
+                .Where(ur => ur.User_Id == userId)
+                .Select(ur => ur.Role_Id)
+                .ToListAsync();
+
+            var permissionName = PermissionEnum.Read.ToString();
+
+            var permission = await _dbContext.Permissions
+                .FirstOrDefaultAsync(p => p.Name == permissionName);
+
+            if (permission == null)
+            {
+                return new ApiResponse<object>(false, "Permission not found.");
+            }
+
+            var hasReadPermission = await _dbContext.RolePermissions
+                .AnyAsync(rp => userRoleIds.Contains(rp.RoleId) && rp.PermissionId == permission.Id);
+
+            if (!hasReadPermission)
+            {
+                return new ApiResponse<object>(false, ApiMessageExtensions.RestrictedByAdmin);
+            }
+
+            var users = await _dbContext.Users
+                .Where(x => !x.IsDeleted)
+                .Select(user => new
+                {
+                    user.Id,
+                    user.FirstName,
+                    user.LastName,
+                    Roles = _dbContext.UsersRoles
+                        .Where(ur => ur.User_Id == user.Id)
+                        .Select(ur => new {
+                            role_Id = ur.Role_Id
+                        }).ToList()
+                })
+                .ToListAsync();
+
+            return new ApiResponse<object>(true, "Users fetched successfully", users);
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponse<object>(false, "An error occurred while fetching users.");
+        }
+    }
+
+
     public async Task<ApiResponse<object>> GetAllUsersAsync(string query, string sortBy, string sortOrder, int pageNumber, int pageSize, Guid userId)
     {
-        // 1. Check for permission
         var userRoleIds = await _dbContext.UsersRoles
             .Where(ur => ur.User_Id == userId)
             .Select(ur => ur.Role_Id)
@@ -215,7 +266,6 @@ public class UserRepository : IUserRepository
             return new ApiResponse<AddUserResponseDto>(false, ApiMessageExtensions.RoleNotFound);
         }
 
-        // 7. Return result
         var responseDto = new AddUserResponseDto
         {
             Id = user.Id,
@@ -342,7 +392,6 @@ public class UserRepository : IUserRepository
         }
     }
 
-
     public async Task<ApiResponse<User>> RegisterUserAsync(RegisterRequest request)
     {
         var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
@@ -432,6 +481,14 @@ public class UserRepository : IUserRepository
 
         bool isAdmin = currentUserRole.role_Id == adminRole.role_Id;
 
+        var permissions = await _dbContext.RolePermissions
+            .Where(rp => rp.RoleId == currentUserRole.role_Id)
+            .Join(_dbContext.Permissions,
+                rp => rp.PermissionId,
+                p => p.Id,
+                (rp, p) => p.Name)
+            .ToListAsync();
+
         var token = jwtTokenService.GenerateToken(user.Id.ToString(), user.Email, currentUserRole.role_name);
 
         var loginResponse = new LoginResponseDto
@@ -444,10 +501,66 @@ public class UserRepository : IUserRepository
             Role_Id = currentUserRole.role_Id,
             Role_Name = currentUserRole.role_name,
             Token = token,
+            Permissions = permissions
         };
 
         return new ApiResponse<LoginResponseDto>(true, ApiMessageExtensions.UserLoginSuccessfully, loginResponse);
     }
+
+    public async Task<ApiResponse<LoginResponseDto>> MimicLoginAsync(Guid adminUserId, string targetEmail, JwtTokenService jwtTokenService)
+    {
+        var isAdmin = await IsUserAdminAsync(adminUserId);
+        if (!isAdmin)
+        {
+            return new ApiResponse<LoginResponseDto>(false, "Only admin users can mimic login");
+        }
+
+        var targetUser = await GetUserByEmailAsync(targetEmail);
+        if (targetUser == null)
+        {
+            return new ApiResponse<LoginResponseDto>(false, "Target user not found");
+        }
+
+        var userRole = await _dbContext.UsersRoles
+            .FirstOrDefaultAsync(ur => ur.User_Id == targetUser.Id);
+        if (userRole == null)
+        {
+            return new ApiResponse<LoginResponseDto>(false, "Target user's role not assigned");
+        }
+
+        var role = await _dbContext.Roles
+            .FirstOrDefaultAsync(r => r.role_Id == userRole.Role_Id);
+        if (role == null)
+        {
+            return new ApiResponse<LoginResponseDto>(false, "Target user's role not found");
+        }
+
+        var permissions = await _dbContext.RolePermissions
+            .Where(rp => rp.RoleId == role.role_Id)
+            .Join(_dbContext.Permissions,
+                  rp => rp.PermissionId,
+                  p => p.Id,
+                  (rp, p) => p.Name)
+            .ToListAsync();
+
+        var token = jwtTokenService.GenerateToken(targetUser.Id.ToString(), targetUser.Email, role.role_name, isMimic: true);
+
+        var loginResponse = new LoginResponseDto
+        {
+            Id = targetUser.Id,
+            FirstName = targetUser.FirstName,
+            LastName = targetUser.LastName,
+            Email = targetUser.Email,
+            Phone = targetUser.Phone,
+            Role_Id = role.role_Id,
+            Role_Name = role.role_name,
+            Token = token,
+            Permissions = permissions
+        };
+
+        return new ApiResponse<LoginResponseDto>(true, "Mimic login successful", loginResponse);
+    }
+
 
     public async Task<ApiResponse<AddUserResponseDto>> UpdateAsync(Guid id, UpdateUser updateUser, Guid currentUserId)
     {
@@ -514,8 +627,6 @@ public class UserRepository : IUserRepository
         return new ApiResponse<AddUserResponseDto>(true, ApiMessageExtensions.UserUpdatedSuccessfully, responseDto);
     }
 
-
-
     public async Task<User?> GetUserByEmailAsync(string email)
     {
         return await _dbContext.Users
@@ -562,5 +673,83 @@ public class UserRepository : IUserRepository
     public async Task<List<Role>> GetRolesAsync()
     {
         return await _dbContext.Roles.ToListAsync();
+    }
+
+    public async Task<bool> IsUserAdminAsync(Guid userId)
+    {
+        var userRole = await _dbContext.UsersRoles
+            .FirstOrDefaultAsync(ur => ur.User_Id == userId);
+
+        if (userRole == null) return false;
+
+        var role = await _dbContext.Roles
+            .FirstOrDefaultAsync(r => r.role_Id == userRole.Role_Id);
+
+        return role != null && role.role_name == RolesEnum.Admin.ToString();
+    }
+
+    public async Task<ApiResponse<CurrentUserProfileDto>> GetCurrentUserProfileAsync(Guid userId)
+    {
+        var user = await _dbContext.Users
+            .Where(u => u.Id == userId && !u.IsDeleted)
+            .Select(u => new CurrentUserProfileDto
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email,
+                Phone = u.Phone ?? 0,
+                UserRole = _dbContext.UsersRoles
+                    .Where(ur => ur.User_Id == u.Id)
+                    .Join(_dbContext.Roles,
+                          ur => ur.Role_Id,
+                          r => r.role_Id,
+                          (ur, r) => new UserRoleDto
+                          {
+                              Role_Id = r.role_Id,
+                              Role_Name = r.role_name
+                          })
+                    .ToList()
+            })
+            .FirstOrDefaultAsync();
+
+        if (user == null)
+        {
+            return new ApiResponse<CurrentUserProfileDto>(false, ApiMessageExtensions.UserNotFound);
+        }
+
+        return new ApiResponse<CurrentUserProfileDto>(true, ApiMessageExtensions.UserRetriveSuccessfully, user);
+    }
+
+    public async Task<ApiResponse<object>> GetFilteredUsersAsync(List<GenericFilter> filters, Guid userId)
+    {
+        var userRoleIds = await _dbContext.UsersRoles
+            .Where(ur => ur.User_Id == userId)
+            .Select(ur => ur.Role_Id)
+            .ToListAsync();
+
+        var permissionName = PermissionEnum.Read.ToString();
+        var permission = await _dbContext.Permissions
+            .FirstOrDefaultAsync(p => p.Name == permissionName);
+
+        if (permission == null || !await _dbContext.RolePermissions
+            .AnyAsync(rp => userRoleIds.Contains(rp.RoleId) && rp.PermissionId == permission.Id))
+        {
+            return new ApiResponse<object>(false, ApiMessageExtensions.RestrictedByAdmin);
+        }
+
+        var query = _dbContext.Users.Where(x => !x.IsDeleted).AsQueryable();
+        query = query.ApplyFilters(filters);
+
+        var result = await query.Select(user => new
+        {
+            user.Id,
+            user.FirstName,
+            user.LastName,
+            user.Email,
+            user.Phone
+        }).ToListAsync();
+
+        return new ApiResponse<object>(true, "Filtered users retrieved", result);
     }
 }

@@ -12,6 +12,6 @@
         public Menu? ParentMenu { get; set; }
         public List<Menu> SubMenus { get; set; }
 
-        public List<MenuPermission> MenuPermissions { get; set; }
+        public ICollection<MenuPermission> MenuPermissions { get; set; }
     }
 }

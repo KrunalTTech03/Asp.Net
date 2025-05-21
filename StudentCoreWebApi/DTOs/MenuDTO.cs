@@ -11,4 +11,9 @@
         public List<MenuDTO> SubMenus { get; set; } = new();
     }
 
+    public class DeleteMenuPermissionDTO
+    {
+        public Guid MenuId { get; set; }
+        public List<Guid> PermissionIds { get; set; }
+    }
 }

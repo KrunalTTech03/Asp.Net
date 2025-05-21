@@ -17,6 +17,9 @@ namespace StudentCoreWebApi.Data
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuPermission> MenuPermissions { get; set; }
+        public DbSet<CreateMenuPermission> CreateMenuPermissions { get; set; }
+        public DbSet<MenuRoles> MenuRoles { get; set; }
+
 
     }
 

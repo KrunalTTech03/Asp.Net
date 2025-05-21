@@ -22,6 +22,21 @@ namespace StudentCoreWebApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("StudentCoreWebApi.Model.CreateMenuPermission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CreateMenuPermissions");
+                });
+
             modelBuilder.Entity("StudentCoreWebApi.Model.Menu", b =>
                 {
                     b.Property<Guid>("Id")
@@ -72,6 +87,27 @@ namespace StudentCoreWebApi.Migrations
                     b.ToTable("MenuPermissions");
                 });
 
+            modelBuilder.Entity("StudentCoreWebApi.Model.MenuRoles", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MenuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("MenuRoles");
+                });
+
             modelBuilder.Entity("StudentCoreWebApi.Model.Permission", b =>
                 {
                     b.Property<Guid>("Id")
@@ -109,6 +145,9 @@ namespace StudentCoreWebApi.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MenuId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PermissionId")
@@ -189,7 +228,7 @@ namespace StudentCoreWebApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StudentCoreWebApi.Model.Permission", "Permission")
+                    b.HasOne("StudentCoreWebApi.Model.CreateMenuPermission", "Permission")
                         .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -198,6 +237,25 @@ namespace StudentCoreWebApi.Migrations
                     b.Navigation("Menu");
 
                     b.Navigation("Permission");
+                });
+
+            modelBuilder.Entity("StudentCoreWebApi.Model.MenuRoles", b =>
+                {
+                    b.HasOne("StudentCoreWebApi.Model.Menu", "Menu")
+                        .WithMany()
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StudentCoreWebApi.Model.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("StudentCoreWebApi.Model.Menu", b =>

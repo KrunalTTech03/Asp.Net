@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentCoreWebApi.Data;
+using StudentCoreWebApi.DTOs;
 using StudentCoreWebApi.Interface;
 using StudentCoreWebApi.Model;
 using StudentCoreWebApi.Response;
@@ -27,7 +28,6 @@ namespace StudentCoreWebApi.Repository
 
             return userRole == "Admin";
         }
-
 
         public async Task<List<Role>> GetRolesAsync()
         {
@@ -93,7 +93,6 @@ namespace StudentCoreWebApi.Repository
             return new ApiResponse<string>(true, "Role deleted successfully.", "Role soft-deleted.");
         }
 
-
         public async Task<ApiResponse<string>> AssignRoleToUserAsync(Guid currentUserId, Guid userId, Guid roleId)
         {
             if (!await IsUserAdminAsync(currentUserId))
@@ -150,7 +149,6 @@ namespace StudentCoreWebApi.Repository
             return new ApiResponse<string>(true, "Specified role removed from user successfully.");
         }
 
-
         public async Task<ApiResponse<List<string>>> GetUserAssignedRoleAsync(Guid userId)
         {
             var roleNames = await _context.UsersRoles
@@ -168,5 +166,29 @@ namespace StudentCoreWebApi.Repository
 
             return new ApiResponse<List<string>>(true, "Roles fetched successfully.", roleNames);
         }
+
+        public async Task<ApiResponse<List<UserDTO>>> GetAllUserAssignedRoleAsync(Guid roleID)
+        {
+            var users = await _context.UsersRoles
+                .Where(ur => ur.Role_Id == roleID)
+                .Join(_context.Users,
+                      ur => ur.User_Id,
+            u => u.Id,
+                      (ur, u) => new UserDTO
+                      {
+                          Id = u.Id,
+                          FirstName = u.FirstName,
+                          LastName = u.LastName,
+                      })
+                .ToListAsync();
+
+            if (users == null || !users.Any())
+            {
+                return new ApiResponse<List<UserDTO>>(false, "No users found for the given Role ID.");
+            }
+
+            return new ApiResponse<List<UserDTO>>(true, "Users fetched successfully.", users);
+        }
+
     }
 }

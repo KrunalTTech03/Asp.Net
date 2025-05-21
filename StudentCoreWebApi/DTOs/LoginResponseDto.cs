@@ -10,6 +10,6 @@
         public Guid Role_Id { get; set; }
         public string Role_Name { get; set; }
         public string Token { get; set; }
-
+        public List<string> Permissions { get; set; } = new List<string>();
     }
 }

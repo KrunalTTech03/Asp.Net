@@ -20,6 +20,19 @@ namespace StudentCoreWebApi.Repository
             _dbcontext = dbcontext;
         }
 
+        public async Task<ApiResponse<List<Permission>>> GetAllPermissionsAsync()
+        {
+            var permissions = await _dbcontext.Permissions.ToListAsync();
+
+            if (permissions == null || !permissions.Any())
+            {
+                return new ApiResponse<List<Permission>>(false, "No permissions found");
+            }
+
+            return new ApiResponse<List<Permission>>(true, "Permissions retrieved successfully", permissions);
+        }
+
+
         public async Task<ApiResponse<Permission>> CreatePermissionAsync(Guid userId, Permission permission)
         {
             if (!await HasPermissionAsync(userId, "ManagePermissions"))
@@ -32,7 +45,7 @@ namespace StudentCoreWebApi.Repository
             return new ApiResponse<Permission>(true, "Permission created successfully", permission);
         }
 
-        public async Task<ApiResponse<string>> AssignPermissionsToRoleAsync(Guid userId, Guid roleId, List<Guid> permissionIds)
+        public async Task<ApiResponse<string>> AssignPermissionsToRoleAsync(Guid userId, Guid roleId, Guid menuId, List<Guid> permissionIds)
         {
             if (!await HasPermissionAsync(userId, "ManagePermissions"))
             {
@@ -45,7 +58,8 @@ namespace StudentCoreWebApi.Repository
                 {
                     Id = Guid.NewGuid(),
                     RoleId = roleId,
-                    PermissionId = permissionId
+                    PermissionId = permissionId,
+                    MenuId = menuId
                 };
 
                 _dbcontext.RolePermissions.Add(rolePermission);
@@ -53,15 +67,25 @@ namespace StudentCoreWebApi.Repository
 
             await _dbcontext.SaveChangesAsync();
 
-            return new ApiResponse<string>(true, "Permissions assigned to role successfully.");
+            return new ApiResponse<string>(true, "Permissions assigned to role and menu successfully.");
+        }
+
+        public async Task<ApiResponse<List<string>>> GetPermissionsByRoleAndMenuAsync(Guid roleId, Guid menuId)
+        {
+            var permissions = await _dbcontext.RolePermissions
+                .Where(rp => rp.RoleId == roleId && rp.MenuId == menuId)
+                .Join(_dbcontext.Permissions,
+                    rp => rp.PermissionId,
+                    p => p.Id,
+                    (rp, p) => p.Name)
+                .ToListAsync();
+
+            return new ApiResponse<List<string>>(true, "Permissions for menu retrieved successfully", permissions);
         }
 
 
-        public async Task<ApiResponse<string>> RemovePermissionFromRoleAsync(Guid userId, Guid roleId, Guid permissionId)
+        public async Task<ApiResponse<string>> RemovePermissionFromRoleAsync(Guid roleId, Guid permissionId)
         {
-            if (!await HasPermissionAsync(userId, "ManagePermissions"))
-                return new ApiResponse<string>(false, "Access denied. Missing permission: ManagePermissions");
-
             var rp = await _dbcontext.RolePermissions
                 .FirstOrDefaultAsync(r => r.RoleId == roleId && r.PermissionId == permissionId);
 
@@ -70,7 +94,6 @@ namespace StudentCoreWebApi.Repository
 
             _dbcontext.RolePermissions.Remove(rp);
             await _dbcontext.SaveChangesAsync();
-
             return new ApiResponse<string>(true, "Permission removed from role successfully");
         }
 

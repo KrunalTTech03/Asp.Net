@@ -22,6 +22,14 @@ namespace StudentCoreWebApi.Controllers
         private Guid GetUserId() =>
             Guid.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var userId) ? userId : Guid.Empty;
 
+        [HttpGet("permissions")]
+        public async Task<IActionResult> GetAllPermissions()
+        {
+            var result = await _permissionRepository.GetAllPermissionsAsync();
+            return result.Success ? Ok(result) : NotFound(result);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> CreatePermission([FromBody] Permission permission)
         {
@@ -34,18 +42,15 @@ namespace StudentCoreWebApi.Controllers
         public async Task<IActionResult> AssignPermissionsToRole([FromBody] AssignPermissionDto dto)
         {
             var userId = GetUserId();
-            var result = await _permissionRepository.AssignPermissionsToRoleAsync(userId, dto.RoleId, dto.PermissionIds); // Modified to handle multiple permissions
+            var result = await _permissionRepository.AssignPermissionsToRoleAsync(userId, dto.RoleId, dto.MenuId, dto.PermissionIds);
             return result.Success ? Ok(result) : Unauthorized(result);
         }
-
-
 
         [HttpDelete("remove")]
         public async Task<IActionResult> RemovePermissionFromRole([FromBody] AssignPermissionDto dto)
         {
-            var userId = GetUserId();
-            var result = await _permissionRepository.RemovePermissionFromRoleAsync(userId, dto.RoleId, dto.PermissionIds.FirstOrDefault()); // Assuming you remove one permission at a time
-            return result.Success ? Ok(result) : Unauthorized(result);
+            var result = await _permissionRepository.RemovePermissionFromRoleAsync(dto.RoleId, dto.PermissionIds.FirstOrDefault());
+            return result.Success ? Ok(result) : BadRequest(result);
         }
 
         [HttpGet("role/{roleId}")]
@@ -54,6 +59,17 @@ namespace StudentCoreWebApi.Controllers
             var result = await _permissionRepository.GetPermissionsByRoleAsync(roleId);
             return result.Success ? Ok(result) : NotFound(result);
         }
+
+        [HttpGet("role/{roleId}/menu/{menuId}/permissions")]
+        public async Task<IActionResult> GetPermissionsByRoleAndMenu(Guid roleId, Guid menuId)
+        {
+            var result = await _permissionRepository.GetPermissionsByRoleAndMenuAsync(roleId, menuId);
+            if (!result.Success)
+                return NotFound(result);
+
+            return Ok(result);
+        }
+
 
         [HttpGet("role-permissions")]
         public async Task<IActionResult> GetAllRolePermissions()

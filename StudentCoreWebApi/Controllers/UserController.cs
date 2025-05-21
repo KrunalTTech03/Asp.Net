@@ -26,13 +26,39 @@ namespace UserCoreWebApi.Controllers
         }
 
         [Authorize]
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            _logger.LogInformation("GetAllUsers called.");
+
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid userId))
+            {
+                _logger.LogWarning("Invalid or missing user ID in token.");
+                return Unauthorized("Invalid or missing user ID.");
+            }
+
+            var response = await _UserRepository.GetAllUserstempAsync(userId);
+
+            if (response == null || !response.Success)
+            {
+                _logger.LogWarning("GetAllUsers failed: {Message}", response?.Message ?? "Failed to fetch users");
+                return NotFound(response);
+            }
+
+            _logger.LogInformation("GetAllUsers completed successfully.");
+            return Ok(response);
+        }
+
+
+        [Authorize]
         [HttpGet("search")]
         public async Task<IActionResult> SearchUsers(
-    [FromQuery] string query = "",
-    [FromQuery] string sortBy = "FirstName",
-    [FromQuery] string sortOrder = "asc",
-    [FromQuery] int pageNumber = 1,
-    [FromQuery] int pageSize = 10)
+        [FromQuery] string query = "",
+        [FromQuery] string sortBy = "FirstName",
+        [FromQuery] string sortOrder = "asc",
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 10)
         {
             _logger.LogInformation("SearchUsers called with query: {Query}, sortBy: {SortBy}, sortOrder: {SortOrder}, pageNumber: {PageNumber}, pageSize: {PageSize}",
                                     query, sortBy, sortOrder, pageNumber, pageSize);

@@ -17,17 +17,22 @@ namespace StudentCoreWebApi.Services
             _jwtSettings = jwtSettings.Value;
         }
 
-        public string GenerateToken(string userId, string email, string role)
+        public string GenerateToken(string userId, string email, string role, bool isMimic = false)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_jwtSettings.Secret);
 
-            var claims = new[]
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, userId),
                 new Claim(ClaimTypes.Email, email),
                 new Claim(ClaimTypes.Role, role)
             };
+
+            if (isMimic)
+            {
+                claims.Add(new Claim("isMimic", "true"));
+            }
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

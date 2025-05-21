@@ -82,7 +82,6 @@ namespace StudentCoreWebApi.Controllers
             return Ok(result);
         }
 
-
         [HttpPost("assign")]
         public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto dto)
         {
@@ -110,6 +109,16 @@ namespace StudentCoreWebApi.Controllers
         public async Task<IActionResult> GetUserAssignedRole([FromBody] UserIdDto dto)
         {
             var result = await _roleRepository.GetUserAssignedRoleAsync(dto.UserId);
+            if (!result.Success)
+                return NotFound(result);
+
+            return Ok(result);
+        }
+
+        [HttpPost("all-assigned-role")]
+        public async Task<IActionResult> GetAllUserAssignedRole([FromBody] RoleRequestDto roleRequest)
+        {
+            var result = await _roleRepository.GetAllUserAssignedRoleAsync(roleRequest.RoleId);
             if (!result.Success)
                 return NotFound(result);
 

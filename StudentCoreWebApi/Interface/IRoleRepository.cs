@@ -1,4 +1,5 @@
-﻿using StudentCoreWebApi.Model;
+﻿using StudentCoreWebApi.DTOs;
+using StudentCoreWebApi.Model;
 using StudentCoreWebApi.Response;
 
 namespace StudentCoreWebApi.Interface
@@ -12,6 +13,7 @@ namespace StudentCoreWebApi.Interface
         Task<ApiResponse<string>> AssignRoleToUserAsync(Guid currentUserId, Guid userId, Guid roleId);
         Task<ApiResponse<string>> RemoveUserRoleAsync(Guid currentUserId, Guid userId, Guid roleId);
         Task<ApiResponse<List<string>>> GetUserAssignedRoleAsync(Guid userId);
+        Task<ApiResponse<List<UserDTO>>> GetAllUserAssignedRoleAsync(Guid roleID);
 
     }
 }
