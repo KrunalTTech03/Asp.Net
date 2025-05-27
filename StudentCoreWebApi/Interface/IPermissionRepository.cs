@@ -14,5 +14,6 @@ namespace StudentCoreWebApi.Interface
         Task<ApiResponse<List<string>>> GetPermissionsByRoleAndMenuAsync(Guid roleId, Guid menuId);
         Task<ApiResponse<List<RolePermissionDto>>> GetAllRolePermissionsAsync();
         Task<bool> HasPermissionAsync(Guid userId, string permissionName);
+        Task<ApiResponse<object>> GetFilteredPermissionsAsync(List<GenericFilter> filters);
     }
 }

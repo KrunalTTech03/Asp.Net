@@ -22,6 +22,7 @@ namespace StudentCoreWebApi.Interface
         Task<User?> GetUserByEmailAsync(string email);
         Task<List<Role>> GetRolesAsync();
         Task<bool> IsUserAdminAsync(Guid userId);
+        Task<ApiResponse<object>> GetFilteredUsersAsync(List<GenericFilter> filters);
 
     }
 }

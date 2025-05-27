@@ -17,5 +17,6 @@ namespace StudentCoreWebApi.Interface
         Task<ApiResponse<object>> CreatePermissionAsync(Guid userId, CreateMenuPermission createMenuPermission);
         Task<ApiResponse<string>> DeletePermissionAsync(Guid userId, Guid permissionId);
         Task<ApiResponse<object>> DeleteMenuPermissionsAsync(Guid userId, Guid menuId, List<Guid> permissionIds);
+        Task<ApiResponse<object>> GetFilteredMenusAsync(List<GenericFilter> filters);
     }
 }

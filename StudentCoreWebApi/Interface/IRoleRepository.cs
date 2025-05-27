@@ -6,7 +6,7 @@ namespace StudentCoreWebApi.Interface
 {
     public interface IRoleRepository
     {
-        Task<List<Role>> GetRolesAsync();
+        Task<RoleListResponseDto> GetRolesAsync();
         Task<ApiResponse<Role>> CreateRoleAsync(Guid userId, Role role);
         Task<ApiResponse<Role>> UpdateRoleAsync(Guid userId, Guid roleId, Role role);
         Task<ApiResponse<string>> DeleteRoleAsync(Guid userId, Guid roleId);
@@ -14,6 +14,7 @@ namespace StudentCoreWebApi.Interface
         Task<ApiResponse<string>> RemoveUserRoleAsync(Guid currentUserId, Guid userId, Guid roleId);
         Task<ApiResponse<List<string>>> GetUserAssignedRoleAsync(Guid userId);
         Task<ApiResponse<List<UserDTO>>> GetAllUserAssignedRoleAsync(Guid roleID);
+        Task<ApiResponse<object>> GetFilteredRolesAsync(List<GenericFilter> filters);
 
     }
 }

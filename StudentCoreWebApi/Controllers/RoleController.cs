@@ -27,16 +27,18 @@ namespace StudentCoreWebApi.Controllers
         public async Task<IActionResult> GetRoles()
         {
             _logger.LogInformation("Fetching all roles.");
-            var roles = await _roleRepository.GetRolesAsync();
-            if (roles == null || roles.Count == 0)
+            var result = await _roleRepository.GetRolesAsync();
+            
+            if (result == null || result.Roles == null || result.Roles.Count == 0)
             {
                 _logger.LogWarning("No roles found.");
-                return NotFound(new ApiResponse<List<Role>>(false, "No roles found.", null));
+                return NotFound(new ApiResponse<RoleListResponseDto>(false, "No roles found.", null));
             }
 
             _logger.LogInformation("Roles retrieved successfully.");
-            return Ok(new ApiResponse<List<Role>>(true, "Roles retrieved successfully.", roles));
+            return Ok(new ApiResponse<RoleListResponseDto>(true, "Roles retrieved successfully.", result));
         }
+
 
         [HttpPost]
         public async Task<IActionResult> CreateRole([FromBody] Role role)
@@ -130,5 +132,13 @@ namespace StudentCoreWebApi.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return Guid.TryParse(userIdClaim, out var userId) ? userId : Guid.Empty;
         }
+
+        [HttpPost("filter")]
+        public async Task<IActionResult> FilterRoles([FromBody] List<GenericFilter> filters)
+        {
+            var result = await _roleRepository.GetFilteredRolesAsync(filters);
+            return Ok(result);
+        }
+
     }
 }

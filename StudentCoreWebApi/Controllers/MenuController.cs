@@ -311,5 +311,12 @@ namespace StudentCoreWebApi.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return Guid.TryParse(userIdClaim, out var userId) ? userId : Guid.Empty;
         }
+
+        [HttpPost("filter")]
+        public async Task<IActionResult> FilterMenus([FromBody] List<GenericFilter> filters)
+        {
+            var result = await _menuRepository.GetFilteredMenusAsync(filters);
+            return Ok(result);
+        }
     }
 }

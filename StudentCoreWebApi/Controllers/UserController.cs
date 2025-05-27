@@ -215,5 +215,11 @@ namespace UserCoreWebApi.Controllers
             return Ok(response);
         }
 
+        [HttpPost("filter")]
+        public async Task<IActionResult> FilterUsers([FromBody] List<GenericFilter> filters)
+        {
+            var result = await _UserRepository.GetFilteredUsersAsync(filters);
+            return Ok(result);
+        }
     }
 }

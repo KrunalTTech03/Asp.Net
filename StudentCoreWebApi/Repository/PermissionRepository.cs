@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentCoreWebApi.Data;
 using StudentCoreWebApi.DTOs;
+using StudentCoreWebApi.Helpers;
 using StudentCoreWebApi.Interface;
 using StudentCoreWebApi.Model;
 using StudentCoreWebApi.Response;
@@ -146,6 +147,72 @@ namespace StudentCoreWebApi.Repository
                 .ToListAsync();
 
             return new ApiResponse<List<RolePermissionDto>>(true, "Role-permission mappings retrieved successfully", rolePermissions);
+        }
+
+        public async Task<ApiResponse<object>> GetFilteredPermissionsAsync(List<GenericFilter> filters)
+        {
+            IQueryable<Permission> query = _dbcontext.Permissions.AsQueryable();
+
+            if (filters == null || !filters.Any())
+            {
+                return new ApiResponse<object>(false, "No filters provided.");
+            }
+
+            var roleFilters = filters.Where(f => f.Column.Equals("assignedroles", StringComparison.OrdinalIgnoreCase)).ToList();
+            var directFilters = filters.Where(f => !f.Column.Equals("assignedroles", StringComparison.OrdinalIgnoreCase)).ToList();
+
+            if (directFilters.Any())
+            {
+                try
+                {
+                    query = query.ApplyFilters(directFilters);
+                }
+                catch (Exception ex)
+                {
+                    return new ApiResponse<object>(false, $"Invalid filter: {ex.Message}");
+                }
+            }
+
+            var permissionsWithRoles = await query
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    AssignedRoles = _dbcontext.RolePermissions
+                        .Where(rp => rp.PermissionId == p.Id)
+                        .Join(_dbcontext.Roles,
+                              rp => rp.RoleId,
+                              r => r.role_Id,
+                              (rp, r) => r.role_name)
+                        .ToList()
+                })
+                .ToListAsync();
+
+            if (roleFilters.Any())
+            {
+                permissionsWithRoles = permissionsWithRoles
+                    .Where(permission =>
+                        roleFilters.All(filter =>
+                        {
+                            var value = filter.Value?.ToLower() ?? "";
+                            return filter.Condition.ToLower() switch
+                            {
+                                "contains" => permission.AssignedRoles.Any(r => r.ToLower().Contains(value)),
+                                "notcontains" => !permission.AssignedRoles.Any(r => r.ToLower().Contains(value)),
+                                _ => false
+                            };
+                        })
+                    )
+                    .ToList();
+            }
+
+            if (!permissionsWithRoles.Any())
+            {
+                bool any = await _dbcontext.Permissions.AnyAsync();
+                return new ApiResponse<object>(false, any ? "No filter applied — check your column, condition, and value." : "No permissions available.");
+            }
+
+            return new ApiResponse<object>(true, "Filtered permissions retrieved successfully", permissionsWithRoles);
         }
 
     }

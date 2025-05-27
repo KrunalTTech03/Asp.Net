@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentCoreWebApi.Data;
 using StudentCoreWebApi.DTOs;
+using StudentCoreWebApi.Enums;
+using StudentCoreWebApi.Helpers;
 using StudentCoreWebApi.Interface;
 using StudentCoreWebApi.Model;
 using StudentCoreWebApi.Response;
@@ -29,9 +31,14 @@ namespace StudentCoreWebApi.Repository
             return userRole == "Admin";
         }
 
-        public async Task<List<Role>> GetRolesAsync()
-        {
-            return await _context.Roles.ToListAsync();
+        public async Task<RoleListResponseDto> GetRolesAsync()
+        {   
+            var roles = await _context.Roles.ToListAsync();
+            return new RoleListResponseDto
+            {
+                TotalCount = roles.Count,
+                Roles = roles
+            };
         }
 
         public async Task<ApiResponse<Role>> CreateRoleAsync(Guid userId, Role role)
@@ -189,6 +196,107 @@ namespace StudentCoreWebApi.Repository
 
             return new ApiResponse<List<UserDTO>>(true, "Users fetched successfully.", users);
         }
+
+        public async Task<ApiResponse<object>> GetFilteredRolesAsync(List<GenericFilter> filters)
+        {
+            IQueryable<Role> query = _context.Roles.Where(r => !r.IsDeleted);
+
+            if (filters == null || !filters.Any())
+            {
+                return new ApiResponse<object>(false, "No filters provided.");
+            }
+
+            try
+            {
+                var permissionFilters = filters
+                    .Where(f => f.Column.Equals("permission", StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                var directFilters = filters
+                    .Where(f => !f.Column.Equals("permission", StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                query = query.ApplyFilters(directFilters);
+
+                // 1. Get filtered role info (basic)
+                var roleList = await query
+                    .Select(r => new
+                    {
+                        id = r.role_Id,
+                        name = r.role_name
+                    })
+                    .ToListAsync();
+
+                var roleIds = roleList.Select(r => r.id).ToList();
+
+                // 2. Load all permissions for those roles in a single query
+                var rolePermissionMap = await _context.RolePermissions
+                    .Where(rp => roleIds.Contains(rp.RoleId))
+                    .Join(_context.Permissions,
+                          rp => rp.PermissionId,
+                          p => p.Id,
+                          (rp, p) => new { rp.RoleId, PermissionName = p.Name.ToLower() })
+                    .ToListAsync();
+
+                var groupedPermissions = rolePermissionMap
+                    .GroupBy(rp => rp.RoleId)
+                    .ToDictionary(g => g.Key, g => g.Select(p => p.PermissionName).ToList());
+
+                var filteredRoles = roleList.Select(r => new
+                {
+                    id = r.id,
+                    name = r.name,
+                    permissions = groupedPermissions.ContainsKey(r.id) ? groupedPermissions[r.id] : new List<string>()
+                }).ToList();
+
+                if (permissionFilters.Any())
+                {
+                    filteredRoles = filteredRoles
+                        .Where(role =>
+                            permissionFilters.All(filter =>
+                            {
+                                var value = filter.Value?.ToLower() ?? "";
+
+                                return filter.Condition.ToLower() switch
+                                {
+                                    "contains" =>
+                                        role.permissions != null &&
+                                        role.permissions.Any(p => p.Contains(value)),
+
+                                    "notcontains" =>
+                                        role.permissions == null ||
+                                        !role.permissions.Any() ||
+                                        !role.permissions.Any(p => p.Contains(value)),
+
+                                    _ => true
+                                };
+                            })
+                        ).ToList();
+                }
+
+
+
+                if (!filteredRoles.Any())
+                {
+                    bool anyRolesExist = await _context.Roles.AnyAsync(r => !r.IsDeleted);
+                    if (anyRolesExist)
+                        return new ApiResponse<object>(false, "No filter applied — check your column, condition, and value.");
+                    else
+                        return new ApiResponse<object>(false, "No roles available.");
+                }
+
+                return new ApiResponse<object>(true, "Filtered roles retrieved successfully", filteredRoles);
+            }
+            catch (ArgumentException ex)
+            {
+                return new ApiResponse<object>(false, $"Invalid filter: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<object>(false, $"An error occurred while filtering roles: {ex.Message}");
+            }
+        }
+
 
     }
 }

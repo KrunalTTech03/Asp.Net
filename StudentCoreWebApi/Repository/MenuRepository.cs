@@ -5,6 +5,7 @@ using StudentCoreWebApi.Interface;
 using StudentCoreWebApi.Model;
 using StudentCoreWebApi.Response;
 using Microsoft.Extensions.Logging;
+using StudentCoreWebApi.Helpers;
 
 namespace StudentCoreWebApi.Repository
 {
@@ -516,5 +517,33 @@ namespace StudentCoreWebApi.Repository
             }
         }
 
+        public async Task<ApiResponse<object>> GetFilteredMenusAsync(List<GenericFilter> filters)
+        {
+            IQueryable<Menu> query = _dbContext.Menus.AsQueryable();
+
+            query = query.ApplyFilters(filters);
+
+            var filteredMenus = await query
+                .Select(m => new
+                {
+                    m.Id,
+                    m.Title,
+                    m.Icon,
+                    m.Path,
+                    m.Order
+                })
+                .ToListAsync();
+
+            if (!filteredMenus.Any())
+            {
+                bool anyMenus = await _dbContext.Menus.AnyAsync();
+                if (anyMenus)
+                    return new ApiResponse<object>(false, "No filter applied — check your column, condition, and value.");
+                else
+                    return new ApiResponse<object>(false, "No menus available.");
+            }
+
+            return new ApiResponse<object>(true, "Filtered menus retrieved successfully", filteredMenus);
+        }
     }
 }

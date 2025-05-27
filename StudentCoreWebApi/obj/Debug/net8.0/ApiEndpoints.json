@@ -197,6 +197,22 @@
   },
   {
     "ContainingType": "StudentCoreWebApi.Controllers.MenuController",
+    "Method": "FilterMenus",
+    "RelativePath": "api/Menu/filter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filters",
+        "Type": "System.Collections.Generic.List\u00601[[StudentCoreWebApi.DTOs.GenericFilter, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudentCoreWebApi.Controllers.MenuController",
     "Method": "GetAllPermissions",
     "RelativePath": "api/Menu/permission-all",
     "HttpMethod": "GET",
@@ -253,6 +269,22 @@
       {
         "Name": "dto",
         "Type": "StudentCoreWebApi.DTOs.AssignPermissionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudentCoreWebApi.Controllers.PermissionController",
+    "Method": "FilterPermissions",
+    "RelativePath": "api/Permission/filter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filters",
+        "Type": "System.Collections.Generic.List\u00601[[StudentCoreWebApi.DTOs.GenericFilter, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -444,6 +476,22 @@
   },
   {
     "ContainingType": "StudentCoreWebApi.Controllers.RoleController",
+    "Method": "FilterRoles",
+    "RelativePath": "api/Role/filter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filters",
+        "Type": "System.Collections.Generic.List\u00601[[StudentCoreWebApi.DTOs.GenericFilter, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudentCoreWebApi.Controllers.RoleController",
     "Method": "RemoveUserRole",
     "RelativePath": "api/Role/remove",
     "HttpMethod": "DELETE",
@@ -530,6 +578,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserCoreWebApi.Controllers.UserController",
+    "Method": "FilterUsers",
+    "RelativePath": "api/User/filter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filters",
+        "Type": "System.Collections.Generic.List\u00601[[StudentCoreWebApi.DTOs.GenericFilter, StudentCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

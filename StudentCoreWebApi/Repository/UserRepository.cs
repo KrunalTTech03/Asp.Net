@@ -78,7 +78,6 @@ public class UserRepository : IUserRepository
         }
     }
 
-
     public async Task<ApiResponse<object>> GetAllUsersAsync(string query, string sortBy, string sortOrder, int pageNumber, int pageSize, Guid userId)
     {
         var userRoleIds = await _dbContext.UsersRoles
@@ -104,7 +103,6 @@ public class UserRepository : IUserRepository
             return new ApiResponse<object>(false, ApiMessageExtensions.RestrictedByAdmin);
         }
 
-        // 2. Get users
         var usersQuery = _dbContext.Users.Where(x => !x.IsDeleted).AsQueryable();
 
         if (!string.IsNullOrEmpty(query))
@@ -158,8 +156,6 @@ public class UserRepository : IUserRepository
             TotalCount = totalCount
         });
     }
-
-
 
     public async Task<ApiResponse<User>> GetByIdAsync(Guid id)
     {
@@ -721,35 +717,46 @@ public class UserRepository : IUserRepository
         return new ApiResponse<CurrentUserProfileDto>(true, ApiMessageExtensions.UserRetriveSuccessfully, user);
     }
 
-    public async Task<ApiResponse<object>> GetFilteredUsersAsync(List<GenericFilter> filters, Guid userId)
+    public async Task<ApiResponse<object>> GetFilteredUsersAsync(List<GenericFilter> filters)
     {
-        var userRoleIds = await _dbContext.UsersRoles
-            .Where(ur => ur.User_Id == userId)
-            .Select(ur => ur.Role_Id)
-            .ToListAsync();
+        IQueryable<User> userQuery = _dbContext.Users.Where(u => !u.IsDeleted);
 
-        var permissionName = PermissionEnum.Read.ToString();
-        var permission = await _dbContext.Permissions
-            .FirstOrDefaultAsync(p => p.Name == permissionName);
+        userQuery = userQuery.ApplyFilters(filters);
 
-        if (permission == null || !await _dbContext.RolePermissions
-            .AnyAsync(rp => userRoleIds.Contains(rp.RoleId) && rp.PermissionId == permission.Id))
+        var filteredUsers = await userQuery.ToListAsync();
+
+        if (!filteredUsers.Any())
         {
-            return new ApiResponse<object>(false, ApiMessageExtensions.RestrictedByAdmin);
+            bool anyUsers = await _dbContext.Users.AnyAsync(u => !u.IsDeleted);
+            if (anyUsers)
+                return new ApiResponse<object>(false, "No filter applied — check your column, condition, and value.");
+            else
+                return new ApiResponse<object>(false, "No users available.");
         }
 
-        var query = _dbContext.Users.Where(x => !x.IsDeleted).AsQueryable();
-        query = query.ApplyFilters(filters);
+        var filteredUserIds = filteredUsers.Select(u => u.Id).ToList();
 
-        var result = await query.Select(user => new
-        {
-            user.Id,
-            user.FirstName,
-            user.LastName,
-            user.Email,
-            user.Phone
-        }).ToListAsync();
+        var result = await _dbContext.Users
+            .Where(u => filteredUserIds.Contains(u.Id))
+            .Select(user => new
+            {
+                user.Id,
+                user.FirstName,
+                user.LastName,
+                user.Email,
+                user.Phone,
+                Roles = _dbContext.UsersRoles
+                    .Where(ur => ur.User_Id == user.Id)
+                    .Join(_dbContext.Roles,
+                        ur => ur.Role_Id,
+                        r => r.role_Id,
+                        (ur, r) => r.role_name)
+                    .ToList()
+            })
+            .ToListAsync();
 
         return new ApiResponse<object>(true, "Filtered users retrieved", result);
     }
+
+
 }

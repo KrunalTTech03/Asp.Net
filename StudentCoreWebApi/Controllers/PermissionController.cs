@@ -78,6 +78,13 @@ namespace StudentCoreWebApi.Controllers
             return Ok(result);
         }
 
+        [HttpPost("filter")]
+        public async Task<IActionResult> FilterPermissions([FromBody] List<GenericFilter> filters)
+        {
+            var result = await _permissionRepository.GetFilteredPermissionsAsync(filters);
+            return Ok(result);
+        }
+
     }
 
 }
