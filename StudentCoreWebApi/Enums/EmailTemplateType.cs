@@ -4,5 +4,7 @@
     {
         UserRegistered,
         UserCreated,
+        PasswordReset,
+        PasswordResetSuccess,
     }
 }

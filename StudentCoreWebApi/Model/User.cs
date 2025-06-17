@@ -10,5 +10,8 @@
         public string? PasswordHash { get; set; }
         public string? PasswordSalt { get; set; }
         public bool IsDeleted { get; set; }
+        public string? PasswordResetToken { get; set; }
+        public DateTime? PasswordResetTokenExpiry { get; set; }
+        public string? ProfileImage { get; set; }
     }
 }

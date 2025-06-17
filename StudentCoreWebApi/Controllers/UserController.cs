@@ -52,6 +52,24 @@ namespace UserCoreWebApi.Controllers
 
 
         [Authorize]
+        [HttpPut("update-profile")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UpdateProfile([FromForm] UpdateProfileDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var currentUserId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+            var result = await _UserRepository.UpdateProfileAsync(dto, currentUserId);
+
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [Authorize]
         [HttpGet("search")]
         public async Task<IActionResult> SearchUsers(
         [FromQuery] string query = "",
@@ -84,7 +102,9 @@ namespace UserCoreWebApi.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] AddUser addUser)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> AddUser([FromForm] AddUser addUser)
+
         {
             if (!ModelState.IsValid)
             {
@@ -116,7 +136,8 @@ namespace UserCoreWebApi.Controllers
 
         [Authorize]
         [HttpPost("UpsertUser")]
-        public async Task<IActionResult> AddOrEditUser([FromBody] UpsertDto userDto)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> AddOrEditUser([FromForm] UpsertDto userDto)
         {
             if (!ModelState.IsValid)
             {
@@ -165,7 +186,9 @@ namespace UserCoreWebApi.Controllers
 
         [Authorize]
         [HttpPut]
-        public async Task<IActionResult> UpdateUser([FromBody] UpdateUser updateUser)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UpdateUser([FromForm] UpdateUser updateUser)
+
         {
             if (!ModelState.IsValid)
             {

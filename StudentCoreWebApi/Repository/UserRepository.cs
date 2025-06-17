@@ -19,13 +19,15 @@ public class UserRepository : IUserRepository
     private readonly IMapper _mapper;
     private readonly PasswordService _passwordService;
     private readonly EmailServices _emailServices;
+    private readonly IConfiguration _config;
 
-    public UserRepository(ApplicationDbContext dbContext, IMapper mapper, PasswordService passwordService, EmailServices emailServices)
+    public UserRepository(ApplicationDbContext dbContext, IMapper mapper, PasswordService passwordService, EmailServices emailServices, IConfiguration config)
     {
         _dbContext = dbContext;
         _mapper = mapper;
         _passwordService = passwordService;
-        _emailServices = emailServices; 
+        _emailServices = emailServices;
+        _config = config;
     }
 
     public async Task<ApiResponse<object>> GetAllUserstempAsync(Guid userId)
@@ -182,26 +184,20 @@ public class UserRepository : IUserRepository
             .FirstOrDefaultAsync(p => p.Name == permissionName);
 
         if (permission == null)
-        {
             return new ApiResponse<AddUserResponseDto>(false, "Permission not found.");
-        }
 
         var hasCreatePermission = await _dbContext.RolePermissions
             .AnyAsync(rp => userRoleIds.Contains(rp.RoleId) && rp.PermissionId == permission.Id);
 
         if (!hasCreatePermission)
-        {
             return new ApiResponse<AddUserResponseDto>(false, ApiMessageExtensions.RestrictedByAdmin);
-        }
 
         var existingUser = await _dbContext.Users
             .Where(x => !x.IsDeleted && x.Email == userDto.Email)
             .FirstOrDefaultAsync();
 
         if (existingUser != null)
-        {
             return new ApiResponse<AddUserResponseDto>(false, ApiMessageExtensions.UserAlreadyExist);
-        }
 
         if (userDto.Phone != null)
         {
@@ -209,24 +205,35 @@ public class UserRepository : IUserRepository
                 .FirstOrDefaultAsync(u => u.Phone == userDto.Phone);
 
             if (existingPhoneUser != null)
-            {
                 return new ApiResponse<AddUserResponseDto>(false, ApiMessageExtensions.UserWithPhoneNumberAlreadyExist);
-            }
         }
 
-
         var user = _mapper.Map<User>(userDto);
+
         string salt;
-        string passwordHash = _passwordService.HashPassword(userDto.Password, out salt);
-        user.PasswordHash = passwordHash;
+        user.PasswordHash = _passwordService.HashPassword(userDto.Password, out salt);
         user.PasswordSalt = salt;
         user.Phone = userDto.Phone ?? 0;
+
+        if (userDto.ProfileImageFile != null)
+        {
+            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "profile-images");
+            if (!Directory.Exists(uploadsFolder))
+                Directory.CreateDirectory(uploadsFolder);
+
+            string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(userDto.ProfileImageFile.FileName);
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using var stream = new FileStream(filePath, FileMode.Create);
+            await userDto.ProfileImageFile.CopyToAsync(stream);
+
+            user.ProfileImage = uniqueFileName;
+        }
 
         await _dbContext.Users.AddAsync(user);
         await _dbContext.SaveChangesAsync();
 
         var assignedRoles = new List<UserRoleDto>();
-
         if (userDto.Roles != null && userDto.Roles.Any())
         {
             foreach (var roleId in userDto.Roles)
@@ -240,7 +247,6 @@ public class UserRepository : IUserRepository
                         User_Id = user.Id,
                         Role_Id = role.role_Id
                     };
-
                     await _dbContext.UsersRoles.AddAsync(userRole);
 
                     assignedRoles.Add(new UserRoleDto
@@ -254,13 +260,14 @@ public class UserRepository : IUserRepository
                     return new ApiResponse<AddUserResponseDto>(false, $"Role with ID '{roleId}' not found.");
                 }
             }
-
             await _dbContext.SaveChangesAsync();
         }
         else
         {
             return new ApiResponse<AddUserResponseDto>(false, ApiMessageExtensions.RoleNotFound);
         }
+
+        string baseUrl = _config["AppBaseUrl"];
 
         var responseDto = new AddUserResponseDto
         {
@@ -271,7 +278,8 @@ public class UserRepository : IUserRepository
             Phone = (long)user.Phone,
             PasswordHash = user.PasswordHash,
             PasswordSalt = user.PasswordSalt,
-            Roles = assignedRoles
+            Roles = assignedRoles,
+            ProfileImage = user.ProfileImage != null ? $"{baseUrl}/profile-images/{user.ProfileImage}" : null
         };
 
         return new ApiResponse<AddUserResponseDto>(true, ApiMessageExtensions.UserAddedSuccessfully, responseDto);
@@ -291,7 +299,17 @@ public class UserRepository : IUserRepository
 
             case EmailTemplateType.UserRegistered:
                 templatePath = "EmailTemplates/UserRegisteration.html";
-                subject = "👤 New User Registered";
+                subject = "New User Registered";
+                break;
+
+            case EmailTemplateType.PasswordReset:
+                templatePath = "EmailTemplates/PasswordReset.html";
+                subject = "Reset Your Password";
+                break;
+
+            case EmailTemplateType.PasswordResetSuccess:
+                templatePath = "EmailTemplates/PasswordResetSuccess.html";
+                subject = "Pasword reset successfully";
                 break;
 
             default:
@@ -557,7 +575,6 @@ public class UserRepository : IUserRepository
         return new ApiResponse<LoginResponseDto>(true, "Mimic login successful", loginResponse);
     }
 
-
     public async Task<ApiResponse<AddUserResponseDto>> UpdateAsync(Guid id, UpdateUser updateUser, Guid currentUserId)
     {
         var userRoleIds = await _dbContext.UsersRoles
@@ -571,28 +588,38 @@ public class UserRepository : IUserRepository
             .FirstOrDefaultAsync(p => p.Name == permissionName);
 
         if (permission == null)
-        {
             return new ApiResponse<AddUserResponseDto>(false, "Edit permission not found.");
-        }
 
         var hasEditPermission = await _dbContext.RolePermissions
             .AnyAsync(rp => userRoleIds.Contains(rp.RoleId) && rp.PermissionId == permission.Id);
 
         if (!hasEditPermission)
-        {
             return new ApiResponse<AddUserResponseDto>(false, ApiMessageExtensions.RestrictedByAdmin);
-        }
 
         var user = await _dbContext.Users.FindAsync(id);
         if (user == null)
-        {
             return new ApiResponse<AddUserResponseDto>(false, ApiMessageExtensions.UserNotFound);
-        }
 
         user.FirstName = updateUser.FirstName;
         user.LastName = updateUser.LastName;
         user.Email = updateUser.Email;
         user.Phone = updateUser.Phone;
+
+        if (updateUser.ProfileImageFile != null)
+        {
+            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "profile-images");
+            if (!Directory.Exists(uploadsFolder))
+                Directory.CreateDirectory(uploadsFolder);
+
+            string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(updateUser.ProfileImageFile.FileName);
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using var stream = new FileStream(filePath, FileMode.Create);
+            await updateUser.ProfileImageFile.CopyToAsync(stream);
+
+            user.ProfileImage = uniqueFileName;
+        }
+
 
         await _dbContext.SaveChangesAsync();
 
@@ -608,6 +635,8 @@ public class UserRepository : IUserRepository
             })
             .ToListAsync();
 
+        string baseUrl = _config["AppBaseUrl"];
+
         var responseDto = new AddUserResponseDto
         {
             Id = user.Id,
@@ -617,7 +646,8 @@ public class UserRepository : IUserRepository
             Phone = (long)user.Phone,
             PasswordHash = user.PasswordHash,
             PasswordSalt = user.PasswordSalt,
-            Roles = assignedRoles
+            Roles = assignedRoles,
+            ProfileImage = user.ProfileImage != null ? $"{baseUrl}/profile-images/{user.ProfileImage}" : null
         };
 
         return new ApiResponse<AddUserResponseDto>(true, ApiMessageExtensions.UserUpdatedSuccessfully, responseDto);
@@ -666,6 +696,73 @@ public class UserRepository : IUserRepository
         return new ApiResponse<object>(true, ApiMessageExtensions.UserDeletedSuccessfully);
     }
 
+    public async Task<ApiResponse<string>> SendPasswordResetEmailAsync(string email, IConfiguration config)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email && !u.IsDeleted);
+        if (user == null)
+            return new ApiResponse<string>(false, "User not found.");
+
+        var resetToken = Guid.NewGuid().ToString();
+        user.PasswordResetToken = resetToken;
+        user.PasswordResetTokenExpiry = DateTime.UtcNow.AddMinutes(5);
+        await _dbContext.SaveChangesAsync();
+
+        var frontendBaseUrl = config["FrontendBaseUrl"] ?? "http://172.16.3.79:5555";
+        string resetLink = $"{frontendBaseUrl}/reset-password?token={resetToken}&email={Uri.EscapeDataString(email)}";
+
+        var placeholders = new Dictionary<string, string>
+    {
+        { "FirstName", user.FirstName },
+        { "ResetLink", resetLink }
+    };
+
+        bool sent = await SendTemplateEmailAsync(EmailTemplateType.PasswordReset, placeholders, user.Email);
+
+        return sent
+            ? new ApiResponse<string>(true, "Reset password email sent.")
+            : new ApiResponse<string>(false, "Failed to send reset password email.");
+    }
+
+    public async Task<ApiResponse<string>> ResetPasswordAsync(string email, string token, string newPassword)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email && !u.IsDeleted);
+        if (user == null)
+            return new ApiResponse<string>(false, "User not found.");
+
+        if (user.PasswordResetToken == null || user.PasswordResetTokenExpiry == null)
+            return new ApiResponse<string>(false, "You have already reset your password using this link.");
+
+        if (user.PasswordResetToken != token || user.PasswordResetTokenExpiry < DateTime.UtcNow)
+            return new ApiResponse<string>(false, "Invalid or expired token.");
+
+        string salt;
+        user.PasswordHash = _passwordService.HashPassword(newPassword, out salt);
+        user.PasswordSalt = salt;
+        user.PasswordResetToken = null;
+        user.PasswordResetTokenExpiry = null;
+
+        await _dbContext.SaveChangesAsync();
+
+        var roleName = await _dbContext.UsersRoles
+            .Where(r => r.User_Id == user.Id)
+            .Join(_dbContext.Roles,
+                  ur => ur.Role_Id,
+                  r => r.role_Id,
+                  (ur, r) => r.role_name)
+            .FirstOrDefaultAsync();
+
+        var placeholders = new Dictionary<string, string>
+    {
+        { "FirstName", user.FirstName ?? "User" },
+        { "Email", user.Email },
+        { "Role", roleName ?? "Not Assigned" }
+    };
+
+        await SendTemplateEmailAsync(EmailTemplateType.PasswordResetSuccess, placeholders, user.Email);
+
+        return new ApiResponse<string>(true, "Password has been reset successfully.");
+    }
+
     public async Task<List<Role>> GetRolesAsync()
     {
         return await _dbContext.Roles.ToListAsync();
@@ -686,35 +783,49 @@ public class UserRepository : IUserRepository
 
     public async Task<ApiResponse<CurrentUserProfileDto>> GetCurrentUserProfileAsync(Guid userId)
     {
+        string baseUrl = _config["AppBaseUrl"];
+
         var user = await _dbContext.Users
             .Where(u => u.Id == userId && !u.IsDeleted)
-            .Select(u => new CurrentUserProfileDto
+            .Select(u => new
             {
-                Id = u.Id,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                Email = u.Email,
-                Phone = u.Phone ?? 0,
-                UserRole = _dbContext.UsersRoles
+                u.Id,
+                u.FirstName,
+                u.LastName,
+                u.Email,
+                u.Phone,
+                u.ProfileImage,
+                Roles = _dbContext.UsersRoles
                     .Where(ur => ur.User_Id == u.Id)
                     .Join(_dbContext.Roles,
-                          ur => ur.Role_Id,
-                          r => r.role_Id,
-                          (ur, r) => new UserRoleDto
-                          {
-                              Role_Id = r.role_Id,
-                              Role_Name = r.role_name
-                          })
+                        ur => ur.Role_Id,
+                        r => r.role_Id,
+                        (ur, r) => new UserRoleDto
+                        {
+                            Role_Id = r.role_Id,
+                            Role_Name = r.role_name
+                        })
                     .ToList()
             })
             .FirstOrDefaultAsync();
 
         if (user == null)
-        {
             return new ApiResponse<CurrentUserProfileDto>(false, ApiMessageExtensions.UserNotFound);
-        }
 
-        return new ApiResponse<CurrentUserProfileDto>(true, ApiMessageExtensions.UserRetriveSuccessfully, user);
+        var result = new CurrentUserProfileDto
+        {
+            Id = user.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email,
+            Phone = user.Phone ?? 0,
+            ProfileImage = !string.IsNullOrEmpty(user.ProfileImage)
+                ? $"{baseUrl}/profile-images/{user.ProfileImage}"
+                : null,
+            UserRole = user.Roles
+        };
+
+        return new ApiResponse<CurrentUserProfileDto>(true, ApiMessageExtensions.UserRetriveSuccessfully, result);
     }
 
     public async Task<ApiResponse<object>> GetFilteredUsersAsync(List<GenericFilter> filters)
@@ -758,5 +869,33 @@ public class UserRepository : IUserRepository
         return new ApiResponse<object>(true, "Filtered users retrieved", result);
     }
 
+    public async Task<ApiResponse<string>> UpdateProfileAsync(UpdateProfileDto dto, Guid currentUserId)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == currentUserId && !u.IsDeleted);
+        if (user == null)
+            return new ApiResponse<string>(false, "User not found.");
 
+        user.FirstName = dto.FirstName;
+        user.LastName = dto.LastName;
+        user.Email = dto.Email;
+        user.Phone = dto.Phone;
+
+        if (dto.ProfileImageFile != null)
+        {
+            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "profile-images");
+            if (!Directory.Exists(uploadsFolder))
+                Directory.CreateDirectory(uploadsFolder);
+
+            string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(dto.ProfileImageFile.FileName);
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using var stream = new FileStream(filePath, FileMode.Create);
+            await dto.ProfileImageFile.CopyToAsync(stream);
+
+            user.ProfileImage = uniqueFileName;
+        }
+
+        await _dbContext.SaveChangesAsync();
+        return new ApiResponse<string>(true, "Profile updated successfully.");
+    }
 }

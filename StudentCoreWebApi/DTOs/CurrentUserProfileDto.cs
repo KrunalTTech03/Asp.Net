@@ -8,6 +8,7 @@
         public List<UserRoleDto> UserRole { get; set; } = new(); 
         public string Email { get; set; }
         public long Phone { get; set; }
+        public string? ProfileImage { get; set; }
     }
 
 }

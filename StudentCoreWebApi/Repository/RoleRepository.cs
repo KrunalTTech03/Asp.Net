@@ -218,7 +218,6 @@ namespace StudentCoreWebApi.Repository
 
                 query = query.ApplyFilters(directFilters);
 
-                // 1. Get filtered role info (basic)
                 var roleList = await query
                     .Select(r => new
                     {
@@ -229,7 +228,6 @@ namespace StudentCoreWebApi.Repository
 
                 var roleIds = roleList.Select(r => r.id).ToList();
 
-                // 2. Load all permissions for those roles in a single query
                 var rolePermissionMap = await _context.RolePermissions
                     .Where(rp => roleIds.Contains(rp.RoleId))
                     .Join(_context.Permissions,

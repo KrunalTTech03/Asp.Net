@@ -9,5 +9,6 @@
         public long Phone { get; set; }
         public string Password { get; set; }
         public List<Guid> Roles { get; set; }
+        public IFormFile? ProfileImageFile { get; set; }
     }
 }

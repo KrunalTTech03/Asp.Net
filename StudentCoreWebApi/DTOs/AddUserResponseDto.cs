@@ -9,6 +9,7 @@
         public long Phone { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
+        public string? ProfileImage { get; set; }
         public List<UserRoleDto> Roles { get; set; }
     }
 }

@@ -8,6 +8,6 @@
         public string Email { get; set; }
         public long Phone { get; set; }
         public List<Guid> Roles { get; set; }
-
+        public IFormFile? ProfileImageFile { get; set; }
     }
 }

@@ -123,6 +123,25 @@ namespace StudentCoreWebApi.Controllers
             return Ok(result);
         }
 
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request, [FromServices] IConfiguration config)
+        {
+            var result = await _UserRepository.SendPasswordResetEmailAsync(request.Email, config);
+            return result.Success ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
+        {
+            if (request.NewPassword != request.ConfirmPassword)
+            {
+                return BadRequest(new ApiResponse<string>(false, "New password and confirm password do not match."));
+            }
+
+            var result = await _UserRepository.ResetPasswordAsync(request.Email, request.Token, request.NewPassword);
+            return result.Success ? Ok(result) : BadRequest(result);
+        }
+
 
     }
 }

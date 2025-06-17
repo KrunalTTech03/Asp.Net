@@ -23,6 +23,9 @@ namespace StudentCoreWebApi.Interface
         Task<List<Role>> GetRolesAsync();
         Task<bool> IsUserAdminAsync(Guid userId);
         Task<ApiResponse<object>> GetFilteredUsersAsync(List<GenericFilter> filters);
+        Task<ApiResponse<string>> SendPasswordResetEmailAsync(string email, IConfiguration config);
+        Task<ApiResponse<string>> ResetPasswordAsync(string email, string token, string newPassword);
+        Task<ApiResponse<string>> UpdateProfileAsync(UpdateProfileDto dto, Guid currentUserId);
 
     }
 }
